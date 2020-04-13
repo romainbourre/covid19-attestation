@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col">
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add</i>Ajouter une personne</a>
+
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Ajouter une personne</h4>
+        <div class="row attestation-form">
+          <form class="col s12" [formGroup]="addPeopleForm">
+            <div class="row">
+              <div class="input-field col m6 s12">
+                <input formControlName="firstName" id="first-name" type="text" class="validate">
+                <label for="first-name">Prénom</label>
+              </div>
+              <div class="input-field col m6 s12">
+                <input formControlName="lastName" id="last-name" type="text" class="validate">
+                <label for="last-name">Nom</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col m6 s12">
+                <input formControlName="birthDate" id="birth-date" type="date">
+                <label for="birth-date">Date de naissance</label>
+              </div>
+              <div class="input-field col m6 s12">
+                <input formControlName="birthPlace" id="birth-city" type="text" class="validate">
+                <label for="birth-city">Lieu de naissance</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input formControlName="address" id="address" type="text" class="validate">
+                <label for="address">Adresse</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col m6 s12">
+                <input formControlName="postalCode" id="postal-code" type="text" class="validate">
+                <label for="postal-code">Code Postal</label>
+              </div>
+              <div class="input-field col m6 s12">
+                <input formControlName="city" id="city" type="text" class="validate">
+                <label for="city">Ville</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a (click)="onSubmit()" class="modal-close waves-effect waves-green btn-flat">Ajouter</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col m3 s12" *ngFor="let user of users">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">{{user.firstName}}</span>
+        <p>Né le {{user.birthDate | date : 'dd/MM/yyyy'}}, à {{user.birthPlace}}</p>
+        <p>{{user.address}}</p>
+        <p>{{user.postalCode}} - {{user.city}}</p>
+      </div>
+      <div class="card-action">
+        <a href="#">nouvelle attestation</a>
+        <a class="red-text" (click)="deleteUser(user)">Supprimer</a>
+      </div>
+    </div>
+
+  </div>
+</div>

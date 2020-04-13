@@ -1,0 +1,64 @@
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {User} from '../../models/user.model';
+declare var M: any;
+
+@Component({
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss']
+})
+export class MainPageComponent implements OnInit, AfterViewInit {
+
+  addPeopleForm: FormGroup;
+  users: User[];
+
+  constructor(private fb: FormBuilder,
+              private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.resetForm();
+    this.loadUsers();
+  }
+
+  private loadUsers() {
+    this.userService.getAll().subscribe(users => this.users = users);
+  }
+
+  public resetForm() {
+    this.addPeopleForm = this.fb.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      birthDate: ['', Validators.required],
+      birthPlace: ['', Validators.required],
+      address: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      city: ['', Validators.required]
+    });
+  }
+
+  public deleteUser(user: User) {
+    console.log(user);
+    this.userService.delete(user);
+    this.loadUsers();
+  }
+
+  public onSubmit() {
+    if (this.addPeopleForm.valid) {
+      this.userService.add(this.addPeopleForm.value);
+      this.loadUsers();
+      this.resetForm();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.modal');
+      M.Modal.init(elements, null);
+    });
+
+    const birthDateElements = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(birthDateElements, null);
+  }
+}

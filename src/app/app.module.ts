@@ -3,16 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
