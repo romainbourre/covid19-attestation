@@ -17,11 +17,23 @@ export class UserService {
 
     if (data !== null) {
       users = JSON.parse(data) as User[];
-      user.id = Math.max(...users.map(u => u.id));
     }
+
+    user.id = users.length > 0 ? Math.max(...users.map(u => u.id)) : 0;
 
     users.push(user);
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(users));
+  }
+
+  public get(id: number) {
+    const data = localStorage.getItem(this.STORAGE_KEY);
+    const users: User[] = [];
+
+    if (data !== null) {
+      users.push(...JSON.parse(data) as User[]);
+    }
+
+    return of(users.find(u => u.id === id));
   }
 
   public getAll(): Observable<User[]> {

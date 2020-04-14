@@ -63,7 +63,7 @@
         <p>{{user.postalCode}} - {{user.city}}</p>
       </div>
       <div class="card-action">
-        <a href="#">nouvelle attestation</a>
+        <a [routerLink]="['/', 'attestation', user.id]">nouvelle attestation</a>
         <a class="red-text" (click)="deleteUser(user)">Supprimer</a>
       </div>
     </div>

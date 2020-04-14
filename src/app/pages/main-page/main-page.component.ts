@@ -39,7 +39,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   public deleteUser(user: User) {
-    console.log(user);
     this.userService.delete(user);
     this.loadUsers();
   }
@@ -57,8 +56,5 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       const elements = document.querySelectorAll('.modal');
       M.Modal.init(elements, null);
     });
-
-    const birthDateElements = document.querySelectorAll('.datepicker');
-    M.Datepicker.init(birthDateElements, null);
   }
 }
