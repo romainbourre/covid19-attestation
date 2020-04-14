@@ -19,7 +19,7 @@ export class UserService {
       users = JSON.parse(data) as User[];
     }
 
-    user.id = users.length > 0 ? Math.max(...users.map(u => u.id)) : 0;
+    user.id = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 0;
 
     users.push(user);
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(users));
