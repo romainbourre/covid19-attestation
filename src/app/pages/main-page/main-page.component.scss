@@ -36,6 +36,10 @@
   transition: 0.3s;
 }
 
+.modal {
+  overflow-y: scroll;
+}
+
 .modal-content {
 
   .modal-title {
@@ -61,10 +65,11 @@
 
   .save-person-btn {
 
-    margin: 10px;
+    margin-left: 20px;
 
     a {
-      margin-top: 30px;
+      height: auto !important;
+      margin-top: 20px;
       width: 130px;
       background-color: #006EDB;
       border-radius: 8px;
@@ -76,7 +81,7 @@
       color: white;
       border: none;
       font-size: 16px;
-      padding: 20px;
+      padding: 4px 12px 4px 12px;
     }
 
     a:hover {
@@ -87,6 +92,73 @@
 
   }
 
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  color: black;
+  box-shadow: none;
+
+  .card-title {
+    color: black;
+  }
+
+  p {
+    color: #666;
+  }
+
+  .card-action {
+    display: flex;
+
+    div {
+      text-transform: initial !important;
+      height: 56px;
+      margin-top: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+      transition: 0.3s !important;
+      text-decoration: none;
+      border: none;
+      font-size: 16px;
+      color: white !important;
+      margin-right: 16px;
+
+      .btn-content {
+        margin: 0 12px;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: none;
+
+        p, span {
+          line-height: 56px;
+          color: white !important;
+          margin: 0;
+        }
+      }
+    }
+
+    div:hover {
+      cursor: pointer;
+      box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.20);
+      transition: 0.3s !important;
+      color: white !important;
+    }
+
+    .new {
+      width: 210px;
+      background-color: #006EDB;
+    }
+
+    .delete {
+      width: 140px;
+      background-color: #E8475C;
+    }
+
+  }
 }
 
 
