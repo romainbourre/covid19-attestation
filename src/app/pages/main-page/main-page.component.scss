@@ -1,3 +1,85 @@
-.attestation-form {
-  padding: 40px;
+
+.add-person-btn {
+  margin: auto;
+  width: 280px;
+  height: 56px;
+  background-color: #006EDB;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 56px;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+  transition: 0.3s;
+  text-decoration: none;
+  text-transform: initial;
+  font-size: 16px;
+
+  .btn-content {
+    width: 230px;
+    margin: 0 auto;
+
+    i {
+      font-size: 24px;
+    }
+  }
 }
+
+.add-person-btn:hover {
+  cursor: pointer;
+  box-shadow: 0 12px 17px 2px rgba(0,0,0,0.14), 0 5px 22px 4px rgba(0,0,0,0.12), 0 7px 8px -4px rgba(0,0,0,0.20);
+  transition: 0.3s;
+}
+
+.modal-content {
+
+  .modal-title {
+    display: flex;
+    height: 54px;
+    margin-left: 16px;
+
+    span {
+      font-size: 36px;
+      line-height: 54px;
+    }
+
+    h4 {
+      font-size: 26px;
+      line-height: 54px;
+      margin-left: 26px;
+    }
+  }
+
+  .attestation-form {
+    margin: 20px 16px 20px 16px;
+  }
+
+  .save-person-btn {
+
+    margin: 10px;
+
+    a {
+      margin-top: 30px;
+      width: 130px;
+      background-color: #006EDB;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 46px;
+      box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+      transition: 0.3s;
+      text-decoration: none;
+      color: white;
+      border: none;
+      font-size: 16px;
+      padding: 20px;
+    }
+
+    a:hover {
+      cursor: pointer;
+      box-shadow: 0 12px 17px 2px rgba(0,0,0,0.14), 0 5px 22px 4px rgba(0,0,0,0.12), 0 7px 8px -4px rgba(0,0,0,0.20);
+      transition: 0.3s;
+    }
+
+  }
+
+}
+
+

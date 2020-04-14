@@ -1,10 +1,19 @@
 <div class="row">
   <div class="col">
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add</i>Ajouter une personne</a>
+    <a class="add-person-btn waves-effect waves-light btn modal-trigger" href="#modal1">
+      <div class="btn-content">
+        <i class="material-icons left">add_circle_outline</i>
+        Ajouter une personne
+      </div>
+    </a>
 
     <div id="modal1" class="modal">
       <div class="modal-content">
-        <h4>Ajouter une personne</h4>
+        <div class="modal-title">
+          <span class="material-icons">perm_identity</span>
+          <h4>Ajouter une personne</h4>
+        </div>
+
         <div class="row attestation-form">
           <form class="col s12" [formGroup]="addPeopleForm">
             <div class="row">
@@ -45,9 +54,10 @@
             </div>
           </form>
         </div>
-      </div>
-      <div class="modal-footer">
-        <a (click)="onSubmit()" class="modal-close waves-effect waves-green btn-flat">Ajouter</a>
+
+        <div class="save-person-btn">
+          <a (click)="onSubmit()" class="modal-close waves-effect waves-green btn-flat">Ajouter</a>
+        </div>
       </div>
     </div>
   </div>

@@ -54,6 +54,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     document.addEventListener('DOMContentLoaded', () => {
       const elements = document.querySelectorAll('.modal');
+      console.log("MODAL OPEN");
       M.Modal.init(elements, null);
     });
   }
