@@ -76,7 +76,7 @@
     <div class="card">
       <div class="card-content white-text">
         <span class="card-title">{{user.firstName}}</span>
-        <p>Né le {{user.birthDate | date : 'dd/MM/yyyy'}}, à {{user.birthPlace}}</p>
+        <p>Né le {{user.birthDate | dateFormat | date}}, à {{user.birthPlace}}</p>
         <p>{{user.address}}</p>
         <p>{{user.postalCode}} - {{user.city}}</p>
       </div>
