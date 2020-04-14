@@ -1,10 +1,27 @@
 <div class="row">
   <div class="col">
-    <a class="waves-effect waves-light btn modal-trigger" href="#add-user-modal"><i class="material-icons left">add</i>Ajouter une personne</a>
+    <div class="add-person-btn modal-trigger" href="#add-user-modal">
+      <div class="btn-content">
+        <p>
+          <i class="material-icons left">add_circle_outline</i>
+          Ajouter une personne
+        </p>
+      </div>
+    </div>
+    <!--<div class="btn-content">
+      <a class="add-person-btn waves-effect waves-light btn modal-trigger" href="#modal1">
+        <i class="material-icons left"></i>
+        Ajouter une personne
+      </a>
+    </div>-->
 
     <div id="add-user-modal" class="modal">
       <div class="modal-content">
-        <h4>Ajouter une personne</h4>
+        <div class="modal-title">
+          <span class="material-icons">perm_identity</span>
+          <h4>Ajouter une personne</h4>
+        </div>
+
         <div class="row attestation-form">
           <form class="col s12" [formGroup]="addPeopleForm">
             <div class="row">
@@ -45,17 +62,18 @@
             </div>
           </form>
         </div>
-      </div>
-      <div class="modal-footer">
-        <a (click)="onSubmit()" class="modal-close waves-effect waves-green btn-flat">Ajouter</a>
+
+        <div class="save-person-btn">
+          <a (click)="onSubmit()" class="modal-close waves-effect waves-green btn-flat">Ajouter</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col m3 s12" *ngFor="let user of users">
-    <div class="card blue-grey darken-1">
+  <div class="col m6 s12" *ngFor="let user of users">
+    <div class="card">
       <div class="card-content white-text">
         <span class="card-title">{{user.firstName}}</span>
         <p>Né le {{user.birthDate | date : 'dd/MM/yyyy'}}, à {{user.birthPlace}}</p>
@@ -63,8 +81,18 @@
         <p>{{user.postalCode}} - {{user.city}}</p>
       </div>
       <div class="card-action">
-        <a [routerLink]="['/', 'attestation', user.id]">nouvelle attestation</a>
-        <a class="red-text" (click)="deleteUser(user)">Supprimer</a>
+        <div class="new" [routerLink]="['/', 'attestation', user.id]" >
+          <div class="btn-content">
+            <span class="material-icons">assignment</span>
+            <p>Nouvelle attestation</p>
+          </div>
+        </div>
+        <div class="delete" (click)="deleteUser(user)">
+          <div class="btn-content">
+            <span class="material-icons">delete_outline</span>
+            <p>Supprimer</p>
+          </div>
+        </div>
       </div>
     </div>
 
