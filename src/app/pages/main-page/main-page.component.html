@@ -9,12 +9,6 @@
         </p>
       </div>
     </div>
-    <!--<div class="btn-content">
-      <a class="add-person-btn waves-effect waves-light btn modal-trigger" href="#modal1">
-        <i class="material-icons left"></i>
-        Ajouter une personne
-      </a>
-    </div>-->
 
     <div id="add-user-modal" class="modal">
       <div class="modal-content">
@@ -27,37 +21,73 @@
           <form class="col s12" [formGroup]="addPeopleForm">
             <div class="row">
               <div class="input-field col m6 s12">
-                <input formControlName="firstName" id="first-name" type="text" class="validate">
+                <input formControlName="firstName"
+                       id="first-name"
+                       type="text"
+                       class="validate"
+                       placeholder="Jean-Baptiste">
                 <label for="first-name">Prénom</label>
               </div>
               <div class="input-field col m6 s12">
-                <input formControlName="lastName" id="last-name" type="text" class="validate">
+                <input formControlName="lastName"
+                       id="last-name"
+                       type="text"
+                       class="validate"
+                       placeholder="Dupont">
                 <label for="last-name">Nom</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col m6 s12">
-                <input formControlName="birthDate" id="birth-date" type="date">
+                <input formControlName="birthDate"
+                       id="birth-date"
+                       type="date"
+                       pattern="^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)"
+                       class="validate"
+                       placeholder="31/12/1984">
                 <label for="birth-date">Date de naissance</label>
               </div>
               <div class="input-field col m6 s12">
-                <input formControlName="birthPlace" id="birth-city" type="text" class="validate">
+                <input formControlName="birthPlace"
+                       id="birth-city"
+                       type="text"
+                       class="validate"
+                       placeholder="La Ferté Macé">
                 <label for="birth-city">Lieu de naissance</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input formControlName="address" id="address" type="text" class="validate">
+                <input formControlName="address"
+                       id="address"
+                       type="text"
+                       class="validate"
+                       placeholder="14-16 Rue Voltaire">
                 <label for="address">Adresse</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col m6 s12">
-                <input formControlName="postalCode" id="postal-code" type="text" class="validate">
+                <input formControlName="postalCode"
+                       id="postal-code"
+                       type="text"
+                       class="validate"
+                       inputmode="numeric"
+                       pattern="[0-9]{5}"
+                       min="00000"
+                       max="99999"
+                       autocomplete="postal-code"
+                       minlength="4"
+                       maxlength="5"
+                       placeholder="94270">
                 <label for="postal-code">Code Postal</label>
               </div>
               <div class="input-field col m6 s12">
-                <input formControlName="city" id="city" type="text" class="validate">
+                <input formControlName="city"
+                       id="city"
+                       type="text"
+                       class="validate"
+                       placeholder="Le Kremlin-Bicêtre">
                 <label for="city">Ville</label>
               </div>
             </div>
@@ -65,8 +95,10 @@
         </div>
 
         <div class="save-person-btn">
-          <a (click)="onSubmit()" class="modal-close waves-effect waves-green btn-flat">Ajouter</a>
+          <a (click)="onSubmit()" class="modal-close waves-effect waves-green btn-flat"
+             [ngClass]="{'disabled' : !addPeopleForm.valid}">Ajouter</a>
         </div>
+
       </div>
     </div>
   </div>
@@ -82,7 +114,7 @@
         <p>{{user.postalCode}} - {{user.city}}</p>
       </div>
       <div class="card-action">
-        <div class="new" [routerLink]="['/', 'attestation', user.id]" >
+        <div class="new" [routerLink]="['/', 'attestation', user.id]">
           <div class="btn-content">
             <span class="material-icons">assignment</span>
             <p>Nouvelle attestation</p>

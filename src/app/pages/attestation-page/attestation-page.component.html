@@ -8,7 +8,7 @@
       la catégorie concernée.
     </p>
   </div>
-  <div class="col m12" *ngFor="let reason of reasons">
+  <div class="col s12" *ngFor="let reason of reasons">
     <div class="card" [ngClass]="{'active': reason.active}" (click)="switchReason(reason)">
       <div class="card-content">
         <div class="title">
@@ -22,7 +22,12 @@
   </div>
 </div>
 <div class="row mobile-content">
-  <div class="col generate-btn">
+  <div class="col btn-wrapper">
+    <a class="waves-effect waves-light btn" routerLink="/">
+      Retour
+    </a>
+  </div>
+  <div class="col btn-wrapper">
     <a class="waves-effect waves-light btn" (click)="downloadAttestation()">
       Générer l'attestation de {{user.firstName}}
     </a>
