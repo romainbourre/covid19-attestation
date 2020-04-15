@@ -8,14 +8,16 @@ import { AttestationPageComponent } from './pages/attestation-page/attestation-p
 import {HttpClientModule} from '@angular/common/http';
 import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
-registerLocaleData(localeFr, 'fr');
+registerLocaleData(localeFr, 'fr-FR');
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    AttestationPageComponent
+    AttestationPageComponent,
+    DateFormatPipe,
   ],
   imports: [
     BrowserModule,
@@ -25,9 +27,10 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule
   ],
   providers: [
+    {provide: LOCALE_ID, useValue: 'fr-FR' },
     FormBuilder,
+    DateFormatPipe,
     DatePipe,
-    {provide: LOCALE_ID, useValue: 'fr' }
   ],
   bootstrap: [AppComponent]
 })
