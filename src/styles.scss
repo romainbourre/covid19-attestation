@@ -1,6 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
-  font-family: 'Roboto', sans-serif !important;
-  font-size: 16px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: #F5F5F7;
+}
+
+footer .footer-content {
+  width: 980px;
+  margin: 0 auto;
+}
+
+footer .footer-content p {
+  line-height: 100px;
+  color: #9BA4A8;
+  font-size: 11px;
+  margin: 0;
+}
+
+footer .footer-content p a {
+  color: #9BA4A8;
+  text-decoration: underline;
+}
+
+
+@media (orientation: portrait) {
+  footer {
+    height: auto;
+  }
+
+  footer .footer-content {
+    width: 80%;
+  }
+
+  footer .footer-content p {
+    text-align: center;
+    font-size: 22px;
+    line-height: 1;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
 }

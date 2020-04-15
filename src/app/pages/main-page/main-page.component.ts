@@ -18,15 +18,19 @@ export class MainPageComponent implements OnInit, AfterViewInit {
               private userService: UserService) { }
 
   ngOnInit(): void {
-    this.resetForm();
+    this.createPeopleForm();
     this.loadUsers();
+  }
+
+  public hasNoUser() {
+    return this.users.length === 0;
   }
 
   private loadUsers() {
     this.userService.getAll().subscribe(users => this.users = users);
   }
 
-  public resetForm() {
+  public createPeopleForm() {
     this.addPeopleForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -47,7 +51,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     if (this.addPeopleForm.valid) {
       this.userService.add(this.addPeopleForm.value);
       this.loadUsers();
-      this.resetForm();
+      this.addPeopleForm.reset();
     }
   }
 

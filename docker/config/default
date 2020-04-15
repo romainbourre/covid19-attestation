@@ -1,0 +1,57 @@
+server {
+
+    listen 80 default_server;
+
+    listen [::]:80 default_server;
+
+    server_name covid-testing;
+
+    client_max_body_size 200M;
+
+    root /var/www/covid-testing;
+
+    index index.html;
+
+    error_log /var/log/nginx/error.log;
+
+    location /
+
+    {
+
+        limit_conn conn_limit_per_ip 10;
+
+        limit_req zone=req_limit_per_ip burst=14;
+
+        try_files $uri $uri/ /index.html;
+
+    }
+
+    location ~ \.php$
+
+    {
+
+        include snippets/fastcgi-php.conf;
+
+        include /etc/nginx/fastcgi_params;
+
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+
+        fastcgi_read_timeout 600;
+        fastcgi_param   APP_ENV  DOCKER_PRODUCTION;
+
+        # With php7.0-cgi alone:
+
+        # fastcgi_pass 127.0.0.1:9000;
+
+        # With php7.4-fpm:
+
+    }
+
+    location ~ /\.ht
+    {
+
+        deny all;
+
+    }
+
+}
