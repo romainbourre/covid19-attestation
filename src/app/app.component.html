@@ -1,9 +1,17 @@
-<div class="header">
-  <div class="header-content">
-    <a routerLink="/" class="brand-logo">COVID-19 - Générateur d'attestation</a>
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo"><span class="hide-on-med-and-down">COVID-19 - </span>Générateur d'attestation</a>
   </div>
-</div>
+</nav>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
+
+<footer>
+    <p>
+      Copyright © 2020 | Ce site est une initiative du groupe Stoodent. Développé par
+      <a href="https://lyro.fr" target="_blank">Louis Dupont</a>,
+      <a href="http://romainbourre.fr" target="_blank">Romain Bourré</a> et
+      <a href="#!" target="_blank">Jean-Baptiste Rigal</a>.
+      Ce site n'est aucunement lié au Ministère de l'Interieur.
+    </p>
+</footer>

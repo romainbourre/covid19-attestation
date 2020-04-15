@@ -1,35 +1,37 @@
-<div class="row mobile-content">
-  <div class="col s12 top">
-    <h1 class="title">Les raisons de mon déplacement</h1>
+<div class="container">
+  <div class="row mobile-content">
+    <div class="col s12 top">
+      <h1 class="title">Les raisons de mon déplacement</h1>
 
-    <p>
-      Voici la liste exhaustive des raisons valables à un déplacement telles que définies par le Ministère de
-      l'Interieur. Pour sélectionner la justification qui s'applique à votre demande de déplacement, cliquez sur
-      la catégorie concernée.
-    </p>
-  </div>
-  <div class="col s12" *ngFor="let reason of reasons">
-    <div class="card" [ngClass]="{'active': reason.active}" (click)="switchReason(reason)">
-      <div class="card-content">
-        <div class="title">
-          <span class="material-icons">{{reason.icon}}</span>
-          <span class="card-title">{{reason.title}}</span>
+      <p>
+        Voici la liste exhaustive des raisons valables à un déplacement telles que définies par le Ministère de
+        l'Interieur. Pour sélectionner la justification qui s'applique à votre demande de déplacement, cliquez sur
+        la catégorie concernée.
+      </p>
+    </div>
+    <div class="col s12" *ngFor="let reason of reasons">
+      <div class="card" [ngClass]="{'active': reason.active}" (click)="switchReason(reason)">
+        <div class="card-content">
+          <div class="title">
+            <span class="material-icons left">{{reason.icon}}</span>
+            <span class="card-title">{{reason.title}}</span>
+          </div>
+
+          <p class="description">{{reason.description}}</p>
         </div>
-
-        <p class="description">{{reason.description}}</p>
       </div>
     </div>
   </div>
-</div>
-<div class="row mobile-content">
-  <div class="col btn-wrapper">
-    <a class="waves-effect waves-light btn" routerLink="/">
-      Retour
-    </a>
-  </div>
-  <div class="col btn-wrapper">
-    <a class="waves-effect waves-light btn" (click)="downloadAttestation()">
-      Générer l'attestation de {{user.firstName}}
-    </a>
+  <div class="row mobile-content">
+    <div class="col btn-wrapper">
+      <a class="waves-effect waves-light btn" routerLink="/">
+        Retour
+      </a>
+    </div>
+    <div class="col btn-wrapper">
+      <a class="waves-effect waves-light btn" (click)="downloadAttestation()">
+        Générer l'attestation de {{user.firstName}}
+      </a>
+    </div>
   </div>
 </div>
