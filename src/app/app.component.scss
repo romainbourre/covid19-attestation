@@ -37,7 +37,49 @@
 
 .container {
   padding-top: 20px;
-  padding-bottom: 20px;
   width: 980px;
   margin: 60px auto;
+}
+
+@media (orientation: portrait) {
+  .header {
+    height: 120px;
+  }
+
+  .header .header-content {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .header div .menu a {
+    font-size: 28px;
+    line-height: 120px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    line-height: 120px;
+  }
+
+  .content {
+    width: 80%;
+    margin: 180px auto;
+  }
+
+  footer {
+    height: auto;
+  }
+
+  footer .footer-content {
+    width: 80%;
+  }
+
+  footer .footer-content p {
+    text-align: center;
+    font-size: 22px;
+    line-height: 1;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
 }
