@@ -22,6 +22,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.loadUsers();
   }
 
+  public hasNoUser() {
+    return this.users.length === 0;
+  }
+
   private loadUsers() {
     this.userService.getAll().subscribe(users => this.users = users);
   }

@@ -19,8 +19,6 @@
   .header-content {
     width: 980px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
 
     a {
       position: relative;
@@ -38,27 +36,22 @@
 .container {
   padding-top: 20px;
   width: 980px;
-  margin: 60px auto;
+  margin: 120px auto;
 }
 
 @media (orientation: portrait) {
   .header {
     height: 120px;
-  }
 
-  .header .header-content {
-    width: 80%;
-    margin: 0 auto;
-  }
+    .header-content {
+      width: 80%;
+      margin: 0 auto;
 
-  .header div .menu a {
-    font-size: 28px;
-    line-height: 120px;
-  }
-
-  .header h1 {
-    font-size: 32px;
-    line-height: 120px;
+      a  {
+        font-size: 32px;
+        line-height: 120px;
+      }
+    }
   }
 
   .content {

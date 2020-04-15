@@ -17,6 +17,10 @@
     width: 230px;
     margin: 0 auto;
 
+    .mobile {
+      display: none;
+    }
+
     p {
       color: white;
       line-height: 56px;
@@ -161,4 +165,181 @@
   }
 }
 
+.add-person-btn-mobile {
+  display: none;
+}
 
+.howtouse {
+  display: none;
+}
+
+
+@media (orientation: portrait) {
+
+
+  .mobile-content {
+    width: 80%;
+    margin: 0 auto;
+
+    .m6 {
+      width: 100% !important;
+    }
+
+    .card {
+
+      .card-content {
+        .card-title {
+          font-size: 56px;
+          margin-bottom: 50px;
+        }
+
+        p {
+          font-size: 48px;
+        }
+      }
+
+      .card-action {
+        display: flex;
+        flex-direction: column;
+
+        div {
+          height: 120px;
+        }
+
+        .btn-content {
+          margin: 0 10%;
+          display: flex;
+          justify-content: left;
+          box-shadow: none;
+
+          p, span {
+            line-height: 120px;
+            color: white !important;
+            margin: 0;
+            font-size: 42px;
+          }
+
+          p {
+            margin-left: 8%;
+          }
+        }
+
+        .new {
+          width: 100%;
+        }
+
+        .delete {
+          width: 100%;
+        }
+      }
+
+    }
+  }
+
+  .modal {
+
+    .modal-content {
+
+      .modal-title {
+        height: 120px;
+
+        span {
+          font-size: 54px;
+          line-height: 120px;
+        }
+
+        h4 {
+          font-size: 48px;
+          line-height: 124px;
+          margin-left: 26px;
+        }
+      }
+
+      .row .input-field {
+        width: 100% !important;
+        margin-top: 30px;
+
+        input {
+          font-size: 46px;
+          height: 120px;
+        }
+
+        label {
+          font-size: 46px !important;
+        }
+      }
+
+      .save-person-btn {
+
+        margin-left: 20px;
+
+        a {
+          display: block;
+          margin: 20px auto;
+          width: 50%;
+          height: auto !important;
+          background-color: #006EDB;
+          font-size: 46px;
+          text-transform: initial;
+          padding: 26px 48px 26px 48px;
+        }
+
+        a:hover {
+          cursor: pointer;
+          box-shadow: 0 12px 17px 2px rgba(0,0,0,0.14), 0 5px 22px 4px rgba(0,0,0,0.12), 0 7px 8px -4px rgba(0,0,0,0.20);
+          transition: 0.3s;
+        }
+
+      }
+    }
+  }
+
+  .howtouse {
+    width: 80%;
+    display: block;
+    position: fixed;
+    bottom: 300px;
+    right: 32px;
+
+    p {
+      font-size: 56px;
+    }
+  }
+
+  .add-person-btn {
+    display: block;
+    position: fixed;
+    bottom: 162px;
+    right: 42px;
+    width: 188px;
+    height: 188px;
+    border-radius: 50%;
+    background-color: #006EDB;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+    z-index: 9;
+    transition: 0.3s;
+
+    .btn-content {
+      width: auto;
+
+      .desktop {
+        display: none;
+      }
+
+      .mobile {
+        display: block;
+        width: 100%;
+        color: white;
+        text-align: center;
+        line-height: 188px;
+        font-size: 86px;
+      }
+    }
+  }
+
+  .add-person-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.20);
+    transition: 0.3s;
+  }
+}

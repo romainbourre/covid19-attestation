@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col">
-    <div class="add-person-btn modal-trigger" href="#add-user-modal">
+    <div class="add-person-btn modal-trigger" href="#add-user-modal" [ngClass]="hasNoUser() ? 'pulse': ''">
       <div class="btn-content">
-        <p>
+        <i class="material-icons left mobile">person_add</i>
+        <p class="desktop">
           <i class="material-icons left">add_circle_outline</i>
           Ajouter une personne
         </p>
@@ -71,10 +72,10 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row mobile-content">
   <div class="col m6 s12" *ngFor="let user of users">
     <div class="card">
-      <div class="card-content white-text">
+      <div class="card-content">
         <span class="card-title">{{user.firstName}}</span>
         <p>Né le {{user.birthDate | date : 'dd/MM/yyyy'}}, à {{user.birthPlace}}</p>
         <p>{{user.address}}</p>
@@ -95,6 +96,9 @@
         </div>
       </div>
     </div>
-
   </div>
+</div>
+
+<div class="howtouse" *ngIf="hasNoUser()">
+  <p>Pour commencer, ajoutez une nouvelle personne en cliquant ici</p>
 </div>
