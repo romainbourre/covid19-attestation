@@ -33,15 +33,20 @@ export class AttestationService {
     const heuresortie = creationHour;
     const releaseHours = String(heuresortie).substring(0, 2);
     const releaseMinutes = String(heuresortie).substring(3, 5);
+    const activeReasonsLabels = reasons
+      .filter(r => r.active === true)
+      .map(r => r.title
+        .replace(' ', '-')
+        .toLowerCase());
 
     const data = [
-      `Cree le: ${creationDate} a ${creationHour}`,
+      `Cree le: ${creationDate} à ${creationHour}`,
       `Nom: ${user.lastName}`,
       `Prenom: ${user.firstName}`,
-      `Naissance: ${user.birthDate} a ${user.birthPlace}`,
+      `Naissance: ${user.birthDate} à ${user.birthPlace}`,
       `Adresse: ${user.address} ${user.postalCode} ${user.city}`,
-      `Sortie: ${datesortie} a ${releaseHours}h${releaseMinutes}`,
-      `Motifs: ${reasons}`,
+      `Sortie: ${datesortie} à ${releaseHours}h${releaseMinutes}`,
+      `Motifs: ${activeReasonsLabels}`
     ].join('; ');
 
     const existingPdfBytes = await this.http.get('assets/pdf/certificate.pdf', {responseType: 'arraybuffer'}).toPromise();

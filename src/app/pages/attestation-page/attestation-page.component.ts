@@ -92,7 +92,6 @@ export class AttestationPageComponent implements OnInit {
   }
 
   public switchReason(reason: Reason) {
-    console.log(reason);
     reason.active = !reason.active;
   }
 
