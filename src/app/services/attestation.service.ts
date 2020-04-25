@@ -11,8 +11,7 @@ import {DateFormatPipe} from '../pipes/date-format.pipe';
 })
 export class AttestationService {
 
-  constructor(private http: HttpClient,
-              private datePipe: DateFormatPipe) { }
+  constructor(private http: HttpClient) { }
 
   public idealFontSize(font, text, maxWidth, minSize, defaultSize) {
     let currentSize = defaultSize;
@@ -35,17 +34,16 @@ export class AttestationService {
     const releaseMinutes = String(heuresortie).substring(3, 5);
     const activeReasonsLabels = reasons
       .filter(r => r.active === true)
-      .map(r => r.title
-        .replace(' ', '-')
-        .toLowerCase());
+      .map(r => r.id)
+      .join('-');
 
     const data = [
-      `Cree le: ${creationDate} à ${creationHour}`,
+      `Cree le: ${creationDate} a ${creationHour}`,
       `Nom: ${user.lastName}`,
       `Prenom: ${user.firstName}`,
-      `Naissance: ${user.birthDate} à ${user.birthPlace}`,
+      `Naissance: ${user.birthDate} a ${user.birthPlace}`,
       `Adresse: ${user.address} ${user.postalCode} ${user.city}`,
-      `Sortie: ${datesortie} à ${releaseHours}h${releaseMinutes}`,
+      `Sortie: ${datesortie} a ${releaseHours}h${releaseMinutes}`,
       `Motifs: ${activeReasonsLabels}`
     ].join('; ');
 
