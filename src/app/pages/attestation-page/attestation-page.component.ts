@@ -25,40 +25,33 @@ export class AttestationPageComponent implements OnInit {
     {
       id: 'travail',
       icon: 'work',
-      title: 'Travail',
-      description: 'Déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle, lorsqu\'ils sont indispensables à l\'exercice d’activités ne pouvant être organisées sous forme de télétravail ou déplacements professionnels ne pouvant être différés.',
-      active: false,
-    },
-    {
-      id: 'courses',
-      icon: 'shopping_cart',
-      title: 'Achats nécessaires',
-      description: 'Déplacements pour effectuer des achats de fournitures nécessaires à l’activité professionnelle et des achats de première nécessité dans des établissements dont les activités demeurent autorisées (liste sur gouvernement.fr).',
+      title: 'Travail/Formation',
+      description: 'Déplacements entre le domicile et le lieu d\'exercice de l\'activité professionnelle ou le lieu d’enseignement et de formation',
       active: false,
     },
     {
       id: 'sante',
       icon: 'local_hospital',
       title: 'Consultation médicale',
-      description: 'Consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ; consultations et soins des patients atteints d\'une affection de longue durée.',
+      description: 'Consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ; consultations et soins des patients atteints d\'une affection de longue durée et l’achat de médicaments',
       active: false,
     },
     {
       id: 'famille',
       icon: 'people',
       title: 'Famille et assistance',
-      description: 'Déplacements pour motif familial impérieux, pour l’assistance aux personnes vulnérables ou la garde d’enfants.',
+      description: 'Déplacements pour motif familial impérieux, pour l\'assistance aux personnes vulnérables et précaires ou la garde d\'enfants',
       active: false,
     },
     {
-      id: 'sport',
-      icon: 'local_florist',
-      title: 'Sortie brève et proche',
-      description: 'Déplacements brefs, dans la limite d\'une heure quotidienne et dans un rayon maximal d\'un kilomètre autour du domicile, liés soit à l\'activité physique individuelle des personnes, à l\'exclusion de toute pratique sportive collective et de toute proximité avec d\'autres personnes, soit à la promenade avec les seules personnes regroupées dans un même domicile, soit aux besoins des animaux de compagnie.',
-      active: false
+      id: 'handicap',
+      icon: 'accessible',
+      title: 'Handicap',
+      description: 'Déplacements des personnes en situation de handicap et leur accompagnant',
+      active: false,
     },
     {
-      id: 'judiciaire',
+      id: 'convocation',
       icon: 'gavel',
       title: 'Convocation',
       description: 'Convocation judiciaire ou administrative',
@@ -70,7 +63,21 @@ export class AttestationPageComponent implements OnInit {
       title: 'Intérêt général',
       description: 'Participation à des missions d’intérêt général sur demande de l’autorité administrative.',
       active: false,
-    }
+    },
+    {
+      id: 'transits',
+      icon: 'commute',
+      title: 'Transits',
+      description: 'Déplacements liés à des transits pour des déplacements de longues distances',
+      active: false
+    },
+    {
+      id: 'animaux',
+      icon: 'pets',
+      title: 'Animaux',
+      description: 'Déplacements brefs, dans un rayon maximal d\'un kilomètre autour du domicile pour les besoins des animaux de compagnie',
+      active: false
+    },
   ];
 
   constructor(private userService: UserService,
@@ -88,7 +95,8 @@ export class AttestationPageComponent implements OnInit {
   }
 
   public switchReason(reason: Reason) {
-    reason.active = !reason.active;
+    this.reasons.forEach(r => r.active = false);
+    reason.active = true;
   }
 
   public async downloadAttestation() {

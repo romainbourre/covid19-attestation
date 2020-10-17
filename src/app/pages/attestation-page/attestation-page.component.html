@@ -8,6 +8,10 @@
         l'Interieur. Pour sélectionner la justification qui s'applique à votre demande de déplacement, cliquez sur
         la catégorie concernée.
       </p>
+
+      <p>
+        Je certifie que mon déplacement est lié au motif suivant (sélectionner votre catégorie de sortie) autorisé en application des mesures générales nécessaires pour faire face à l'épidémie de Covid19 dans le cadre de l'état d'urgence sanitaire <a href="#legal">[1]</a> :
+      </p>
     </div>
     <div class="col s12" *ngFor="let reason of reasons">
       <div class="card" [ngClass]="{'active': reason.active}" (click)="switchReason(reason)">
@@ -32,6 +36,11 @@
       <a class="waves-effect waves-light btn" (click)="downloadAttestation()">
         Générer l'attestation de {{user.firstName}}
       </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <small id="legal">[1] Les personnes souhaitant bénéficier de l'une de ces exceptions doivent se munir s'il y a lieu, lors de leurs déplacements hors de leur domicile, d'un document leur permettant de justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions.</small>
     </div>
   </div>
 </div>
