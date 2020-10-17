@@ -94,23 +94,27 @@ export class AttestationPageComponent implements OnInit {
     });
   }
 
-  public switchReason(reason: Reason) {
+  switchReason(reason: Reason) {
     this.reasons.forEach(r => r.active = false);
     reason.active = true;
   }
 
-  public async downloadAttestation() {
+  async downloadAttestation() {
     const pdfBlob = await this.attestationService.generateAttestation(this.user, this.reasons);
     const creationDate = new Date().toLocaleDateString('fr-CA');
     const creationHour = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }).replace(':', '-');
     this.downloadBlob(pdfBlob, `attestation-${creationDate}_${creationHour}.pdf`);
   }
 
-  public downloadBlob(blob, fileName) {
+  downloadBlob(blob, fileName) {
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = fileName;
     document.body.appendChild(link);
     link.click();
+  }
+
+  atLeastOneSelectedCategory(): boolean {
+    return this.reasons.some(r => r.active);
   }
 }

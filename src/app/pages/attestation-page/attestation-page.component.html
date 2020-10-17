@@ -33,7 +33,7 @@
       </a>
     </div>
     <div class="col btn-wrapper">
-      <a class="waves-effect waves-light btn" (click)="downloadAttestation()">
+      <a class="waves-effect waves-light btn btn-success" (click)="downloadAttestation()" [ngClass]="{'disabled': !atLeastOneSelectedCategory()}">
         Générer l'attestation de {{user.firstName}}
       </a>
     </div>

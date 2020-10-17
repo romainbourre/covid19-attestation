@@ -4,6 +4,7 @@ $primary-color-dark: darken($primary-color, 15%) !default;
 
 $error-color: #c62828 !default;
 $error-color-dark: darken($error-color, 15%) !default;
+$success-color: green !default;
 
 .primary-color {
   background: $primary-color;
@@ -18,6 +19,10 @@ $error-color-dark: darken($error-color, 15%) !default;
 
 html {
   height: 100%;
+
+  *:not(input) {
+    user-select: none;
+  }
 }
 body {
   min-height: 100%;
@@ -49,12 +54,22 @@ body {
   height: 56px;
   line-height: 56px;
   box-sizing: border-box;
+
+  &.disabled
+  {
+    opacity: .65 !important;
+    box-shadow: none !important;
+    color: white !important;
+  }
 }
 .btn-error {
   background-color: $error-color !important;
 }
 .btn-error:hover {
   background-color: $error-color-dark !important;
+}
+.btn-success {
+  background-color: $success-color !important;
 }
 
 .card {
@@ -64,6 +79,7 @@ body {
   overflow: hidden;
   color: black;
   box-shadow: none;
+  cursor: pointer;
 
   .card-title {
     color: black;
