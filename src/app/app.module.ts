@@ -9,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { DateFormatPipe } from './pipes/date-format.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -24,7 +26,8 @@ registerLocaleData(localeFr, 'fr-FR');
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR' },
