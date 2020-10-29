@@ -9,6 +9,7 @@ export class Reason {
   icon: string;
   title: string;
   description: string;
+  legal?: string = null;
   active = false;
 }
 
@@ -25,36 +26,52 @@ export class AttestationPageComponent implements OnInit {
     {
       id: 'travail',
       icon: 'work',
-      title: 'Travail/Formation',
-      description: 'Déplacements entre le domicile et le lieu d\'exercice de l\'activité professionnelle ou le lieu d’enseignement et de formation',
+      title: 'Travail',
+      description: 'Déplacements entre le domicile et le lieu d\'exercice de l\'activité professionnelle ou les déplacements professionnels ne pouvant être différés.',
+      legal: 'A utiliser par les travailleurs non salariés, lorsqu\'ils ne peuvent disposer d\'un justificatif de déplacement établi par leur employeur.',
+      active: false,
+    },
+    {
+      id: 'achats',
+      icon: 'shopping_cart',
+      title: 'Courses',
+      description: 'Déplacements pour effectuer des achats de fournitures nécessaires à l\'activité professionnelle, des achats de première nécessité dans des établissements dont les activités demeurent autorisées (liste sur gouvernement.fr) et les livraisons à domicile.',
+      legal: 'Y compris les acquisitions à titre gratuit (distribution de denrées alimentaires...) et les déplacements liés à la perception de prestations sociales et au retrait d\'espèces.',
       active: false,
     },
     {
       id: 'sante',
       icon: 'local_hospital',
       title: 'Consultation médicale',
-      description: 'Consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ; consultations et soins des patients atteints d\'une affection de longue durée et l’achat de médicaments',
+      description: 'Consultations et soins ne pouvant être assurés à distance et ne pouvant être différés et l’achat de médicaments.',
       active: false,
     },
     {
       id: 'famille',
       icon: 'people',
       title: 'Famille et assistance',
-      description: 'Déplacements pour motif familial impérieux, pour l\'assistance aux personnes vulnérables et précaires ou la garde d\'enfants',
+      description: 'Déplacements pour motif familial impérieux, pour l\'assistance aux personnes vulnérables et précaires ou la garde d\'enfants.',
       active: false,
     },
     {
       id: 'handicap',
       icon: 'accessible',
       title: 'Handicap',
-      description: 'Déplacements des personnes en situation de handicap et leur accompagnant',
+      description: 'Déplacements des personnes en situation de handicap et de leur accompagnant.',
+      active: false,
+    },
+    {
+      id: 'sport_animaux',
+      icon: 'transfer_within_a_station',
+      title: 'Sortie brève',
+      description: 'Déplacements brefs, dans la limite d\'une heure quotidienne et dans un rayon maximal d\'un kilomètre autour du domicile, liés soit à l\'activité physique individuelle des personnes, à l\'exclusion de toute pratique sportive collective et de toute proximité avec d\'autres personnes, soit à la promenade avec les seules personnes regroupées dans un même domicile, soit aux besoins des animaux de compagnie.',
       active: false,
     },
     {
       id: 'convocation',
       icon: 'gavel',
       title: 'Convocation',
-      description: 'Convocation judiciaire ou administrative',
+      description: 'Convocation judiciaire ou administrative et rendez-vous dans un service public.',
       active: false,
     },
     {
@@ -65,19 +82,12 @@ export class AttestationPageComponent implements OnInit {
       active: false,
     },
     {
-      id: 'transits',
-      icon: 'commute',
-      title: 'Transits',
-      description: 'Déplacements liés à des transits pour des déplacements de longues distances',
+      id: 'enfants',
+      icon: 'school',
+      title: 'École/Périscolaire',
+      description: 'Déplacement pour chercher les enfants à l’école et à l’occasion de leurs activités périscolaires',
       active: false
-    },
-    {
-      id: 'animaux',
-      icon: 'pets',
-      title: 'Animaux',
-      description: 'Déplacements brefs, dans un rayon maximal d\'un kilomètre autour du domicile pour les besoins des animaux de compagnie',
-      active: false
-    },
+    }
   ];
 
   constructor(private userService: UserService,
@@ -95,8 +105,7 @@ export class AttestationPageComponent implements OnInit {
   }
 
   switchReason(reason: Reason) {
-    this.reasons.forEach(r => r.active = false);
-    reason.active = true;
+    reason.active = !reason.active;
   }
 
   async downloadAttestation() {

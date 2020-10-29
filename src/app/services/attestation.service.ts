@@ -35,7 +35,7 @@ export class AttestationService {
     const activeReasonsLabels = reasons
       .filter(r => r.active === true)
       .map(r => r.id)
-      .join('-');
+      .join(', ');
 
     const data = [
       `Cree le: ${creationDate} a ${creationHour}`,
@@ -73,38 +73,39 @@ export class AttestationService {
       page1.drawText(text, { x, y, size, font });
     };
 
-    drawText(`${user.firstName} ${user.lastName}`, 119, 669);
-    drawText(user.birthDate, 119, 646);
-    drawText(user.birthPlace, 312, 646);
-    drawText(user.address, 133, 622);
-    drawText(`${user.postalCode} ${user.city}`, 133, 609);
+    drawText(`${user.firstName} ${user.lastName}`, 119, 696);
+    drawText(user.birthDate, 119, 674);
+    drawText(user.birthPlace, 298, 674);
+    drawText(`${user.address} ${user.postalCode} ${user.city}`, 133, 652);
 
-
-    console.log(reasons);
+    const caseX = 83;
 
     if (reasons.find(r => r.id === 'travail').active) {
-      drawText('x', 73, 540, 18);
+      drawText('x', caseX, 578, 18);
+    }
+    if (reasons.find(r => r.id === 'achats').active) {
+      drawText('x', caseX, 533, 18);
     }
     if (reasons.find(r => r.id === 'sante').active) {
-      drawText('x', 73, 490, 18);
+      drawText('x', caseX, 477, 18);
     }
     if (reasons.find(r => r.id === 'famille').active) {
-      drawText('x', 73, 426, 18);
+      drawText('x', caseX, 435, 18);
     }
     if (reasons.find(r => r.id === 'handicap').active) {
-      drawText('x', 73, 375, 18);
+      drawText('x', caseX, 396, 18);
+    }
+    if (reasons.find(r => r.id === 'sport_animaux').active) {
+      drawText('x', caseX, 358, 18);
     }
     if (reasons.find(r => r.id === 'convocation').active) {
-      drawText('x', 73, 339, 18);
+      drawText('x', caseX, 295, 18);
     }
     if (reasons.find(r => r.id === 'missions').active) {
-      drawText('x', 73, 302, 18);
+      drawText('x', caseX, 255, 18);
     }
-    if (reasons.find(r => r.id === 'transits').active) {
-      drawText('x', 73, 267, 18);
-    }
-    if (reasons.find(r => r.id === 'animaux').active) {
-      drawText('x', 73, 231, 18);
+    if (reasons.find(r => r.id === 'enfants').active) {
+      drawText('x', caseX, 211, 18);
     }
 
     let locationSize = this.idealFontSize(font, user.city, 83, 7, 11);
@@ -115,10 +116,10 @@ export class AttestationService {
       locationSize = 7;
     }
 
-    drawText(user.city, 105, 176, locationSize);
+    drawText(user.city, 105, 175, locationSize);
 
     drawText(`${datesortie}`, 91, 153, 11);
-    drawText(`${releaseHours}:${releaseMinutes}`, 312, 153, 11);
+    drawText(`${releaseHours}:${releaseMinutes}`, 257, 153, 11);
 
     drawText('Date de création:', 464, 150, 7);
     drawText(`${creationDate} à ${creationHour}`, 455, 144, 7);
