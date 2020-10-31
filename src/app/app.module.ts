@@ -12,6 +12,7 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -22,6 +23,7 @@ registerLocaleData(localeFr, 'fr-FR');
     AttestationPageComponent,
     DateFormatPipe,
     NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
