@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/user.model';
+import {Router} from '@angular/router';
 declare var M: any;
 
 @Component({
@@ -13,13 +14,27 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   addPeopleForm: FormGroup;
   users: User[];
+  edited = false;
 
   constructor(private fb: FormBuilder,
-              private userService: UserService) { }
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.createPeopleForm();
     this.loadUsers();
+  }
+
+  switchEdit(): void {
+    this.edited = !this.edited;
+  }
+
+  goToGenerator(user: User): void {
+    if (this.edited) {
+      return;
+    }
+
+    this.router.navigate(['/', 'attestation', user.id]).then();
   }
 
   public hasNoUser() {

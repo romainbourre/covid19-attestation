@@ -24,3 +24,26 @@
     margin: 20px 16px 20px 16px;
   }
 }
+
+.card:not(.edit) {
+  cursor: pointer;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+
+  .edit-actions {
+    flex-grow: 2;
+  }
+
+  .user-information {
+    flex-grow: 2;
+  }
+
+  .generate-attestation {
+    display: flex;
+    flex-direction: column;
+    color: #6856F4;
+  }
+}

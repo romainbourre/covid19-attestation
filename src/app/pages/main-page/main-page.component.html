@@ -1,10 +1,20 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col">
-      <a class="btn modal-trigger" href="#add-user-modal">
-        <i class="material-icons left">add_circle_outline</i>
-        Ajouter une personne
-      </a>
+      <div class="part-title">
+        <span class="main">Mes profils</span>
+        <span class="secondary link" (click)="switchEdit()">
+          <span *ngIf="!edited">Modifier</span>
+          <span *ngIf="edited">Valider</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="actions-bar">
+        <a class="btn modal-trigger" [ngClass]="{'disabled': edited}" href="#add-user-modal">Ajouter un profil</a>
+      </div>
 
       <div id="add-user-modal" class="modal">
         <div class="modal-content">
@@ -91,7 +101,7 @@
           </div>
 
           <a (click)="onSubmit()" class="modal-close btn"
-             [ngClass]="{'disabled' : !addPeopleForm.valid}">Ajouter</a>
+             [ngClass]="{'disabled': !addPeopleForm.valid}">Ajouter</a>
 
         </div>
       </div>
@@ -100,24 +110,28 @@
 
   <div class="row">
     <div class="col xl4 l6 s12" *ngFor="let user of users">
-      <div class="card">
+      <div class="card" [ngClass]="{'edit': edited}" (click)="goToGenerator(user)">
         <div class="card-content">
-          <span class="card-title">{{user.firstName}}</span>
-          <p>Né le {{user.birthDate | dateFormat | date}}, à {{user.birthPlace}}</p>
-          <p>{{user.address}}</p>
-          <p>{{user.postalCode}} - {{user.city}}</p>
-        </div>
-        <div class="card-action">
-          <a class="btn btn-error" (click)="deleteUser(user)">
-            <i class="material-icons left">delete_outline</i>
-            <span class="hide-on-med-and-down">Supprimer</span>
-          </a>
-          <a class="btn waves-effect" [routerLink]="['/', 'attestation', user.id]">
-            <i class="material-icons left">assignment</i>
-            <span>Nouvelle attestation</span>
-          </a>
+          <div class="edit-actions" *ngIf="edited">
+            <span *ngIf="edited" (click)="deleteUser(user)" class="material-icons link red-text darken-3">delete</span>
+          </div>
+          <div class="user-information">
+            <span class="card-title">{{user.firstName}}</span>
+            <p>Né le {{user.birthDate | dateFormat | date}}, à {{user.birthPlace}}</p>
+            <p>{{user.address}}</p>
+            <p>{{user.postalCode}} - {{user.city}}</p>
+          </div>
+          <div class="generate-attestation" *ngIf="!edited">
+            <span class="material-icons">arrow_forward_ios</span>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 50px">
+    <div class="col-12" style="text-align: center">
+      <img style="width: 50vw" src="assets/images/bermuda-running-from-coronavirus.png" alt="stay at home">
     </div>
   </div>
 </div>
