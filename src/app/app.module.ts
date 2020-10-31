@@ -11,6 +11,7 @@ import localeFr from '@angular/common/locales/fr';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -20,6 +21,7 @@ registerLocaleData(localeFr, 'fr-FR');
     MainPageComponent,
     AttestationPageComponent,
     DateFormatPipe,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

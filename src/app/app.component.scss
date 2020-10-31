@@ -1,22 +1,4 @@
-nav {
-  position: fixed;
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: saturate(1.8);
-  -webkit-backdrop-filter: saturate(1.8) blur(20px);
-  z-index: 10000;
-  border-bottom: 1px solid rgb(204, 204, 204);
-  .nav-wrapper {
-    margin-bottom: 20px;
-  }
-  .brand-logo {
-    padding-left: 10px;
-    padding-right: 10px;
-    color: black;
-    font-family: Roboto, sans-serif;
-    font-size: 24px;
-    width: 100%;
-  }
-}
+
 
 
 footer {
