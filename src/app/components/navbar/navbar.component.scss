@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Oswald:wght@500&display=swap');
+
+
+
+.navbar {
+  $padding: 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  height: auto;
+  max-height: 240px;
+  box-sizing: border-box;
+  background-color: #6856F4;
+  padding: $padding;
+
+  .illustration {
+    width: 20vw;
+    max-width: 200px;
+  }
+
+  .presentation {
+    padding-left: $padding;
+    padding-right: $padding;
+    color: whitesmoke;
+
+    .brand {
+      padding: 0;
+      margin: 0;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .description {
+      font-family: 'Itim', cursive;
+      margin: 0;
+    }
+
+    @media (min-width: 0px) {
+      .brand {
+        font-size: 5vw;
+      }
+      .description {
+        font-size: 4vw;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .brand {
+        font-size: 3vw;
+      }
+      .description {
+        font-size: 2vw;
+      }
+    }
+  }
+}

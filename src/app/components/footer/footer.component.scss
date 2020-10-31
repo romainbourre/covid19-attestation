@@ -1,0 +1,29 @@
+footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 50px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 11px;
+  margin: 0;
+}
+
+footer p a {
+  color: #9BA4A8;
+  text-decoration: underline;
+}
+
+.footer {
+  $padding: 40px;
+
+  padding: $padding;
+  background-color: #6856F4;
+  color: whitesmoke;
+
+  a {
+    color: lightblue !important;
+  }
+}
