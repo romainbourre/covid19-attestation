@@ -1,0 +1,31 @@
+@import "colors";
+
+.card {
+  border: 1px solid $shadow-color;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-family: 'Roboto', sans-serif;
+
+  .card-content {
+    font-weight: 300;
+    color: $text-secondary-color;
+
+    .card-title {
+      display: flex;
+      justify-content: left;
+      font-weight: 400;
+      font-size: 24px;
+      color: $text-neutral-color;
+
+      .material-icons {
+        line-height: 32px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.card.shadow {
+  border: none !important;
+  box-shadow: 2px 2px 10px 2px $shadow-color;
+}

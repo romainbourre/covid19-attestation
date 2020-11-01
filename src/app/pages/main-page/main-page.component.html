@@ -1,124 +1,139 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col">
-      <a class="btn modal-trigger" href="#add-user-modal">
-        <i class="material-icons left">add_circle_outline</i>
-        Ajouter une personne
-      </a>
-
-      <div id="add-user-modal" class="modal">
-        <div class="modal-content">
-          <div class="modal-title">
-            <span class="material-icons">perm_identity</span>
-            <h4>Ajouter une personne</h4>
-          </div>
-
-          <div class="row attestation-form">
-            <form class="col s12" [formGroup]="addPeopleForm">
-              <div class="row">
-                <div class="input-field col m6 s12">
-                  <input formControlName="firstName"
-                         id="first-name"
-                         type="text"
-                         class="validate"
-                         placeholder="Jean-Baptiste">
-                  <label for="first-name">Prénom</label>
-                </div>
-                <div class="input-field col m6 s12">
-                  <input formControlName="lastName"
-                         id="last-name"
-                         type="text"
-                         class="validate"
-                         placeholder="Dupont">
-                  <label for="last-name">Nom</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col m6 s12">
-                  <input formControlName="birthDate"
-                         id="birth-date"
-                         type="text"
-                         pattern="^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)"
-                         class="validate"
-                         placeholder="31/12/1984">
-                  <label for="birth-date">Date de naissance</label>
-                </div>
-                <div class="input-field col m6 s12">
-                  <input formControlName="birthPlace"
-                         id="birth-city"
-                         type="text"
-                         class="validate"
-                         placeholder="La Ferté Macé">
-                  <label for="birth-city">Lieu de naissance</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input formControlName="address"
-                         id="address"
-                         type="text"
-                         class="validate"
-                         placeholder="14-16 Rue Voltaire">
-                  <label for="address">Adresse</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col m6 s12">
-                  <input formControlName="postalCode"
-                         id="postal-code"
-                         type="text"
-                         class="validate"
-                         inputmode="numeric"
-                         pattern="[0-9]{5}"
-                         min="00000"
-                         max="99999"
-                         autocomplete="postal-code"
-                         minlength="4"
-                         maxlength="5"
-                         placeholder="94270">
-                  <label for="postal-code">Code Postal</label>
-                </div>
-                <div class="input-field col m6 s12">
-                  <input formControlName="city"
-                         id="city"
-                         type="text"
-                         class="validate"
-                         placeholder="Le Kremlin-Bicêtre">
-                  <label for="city">Ville</label>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <a (click)="onSubmit()" class="modal-close btn"
-             [ngClass]="{'disabled' : !addPeopleForm.valid}">Ajouter</a>
-
-        </div>
+      <div class="part-title">
+        <span class="main">Mes profils</span>
+        <span class="secondary link" (click)="switchEdit()">
+          <span *ngIf="!edited">Modifier</span>
+          <span *ngIf="edited">Valider</span>
+        </span>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="actions-bar">
+        <a class="btn modal-trigger" [ngClass]="{'disabled': edited}" href="#add-user-modal">Ajouter un profil</a>
+      </div>
+
+
     </div>
   </div>
 
   <div class="row">
     <div class="col xl4 l6 s12" *ngFor="let user of users">
-      <div class="card">
+      <div class="card shadow" [ngClass]="{'edit': edited}" (click)="goToGenerator(user)">
         <div class="card-content">
-          <span class="card-title">{{user.firstName}}</span>
-          <p>Né le {{user.birthDate | dateFormat | date}}, à {{user.birthPlace}}</p>
-          <p>{{user.address}}</p>
-          <p>{{user.postalCode}} - {{user.city}}</p>
-        </div>
-        <div class="card-action">
-          <a class="btn btn-error" (click)="deleteUser(user)">
-            <i class="material-icons left">delete_outline</i>
-            <span class="hide-on-med-and-down">Supprimer</span>
-          </a>
-          <a class="btn waves-effect" [routerLink]="['/', 'attestation', user.id]">
-            <i class="material-icons left">assignment</i>
-            <span>Nouvelle attestation</span>
-          </a>
+          <div class="edit-actions" *ngIf="edited">
+            <span *ngIf="edited" (click)="deleteUser(user)" class="material-icons link red-text darken-3">delete</span>
+          </div>
+          <div class="user-information">
+            <span class="card-title">{{user.firstName}}</span>
+            <p>Né le {{user.birthDate | dateFormat | date}}, à {{user.birthPlace}}</p>
+            <p>{{user.address}}</p>
+            <p>{{user.postalCode}} - {{user.city}}</p>
+          </div>
+          <div class="generate-attestation" *ngIf="!edited">
+            <span class="material-icons">arrow_forward_ios</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="row" style="margin-top: 50px">
+    <div class="col-12" style="text-align: center">
+      <img style="width: 50vw" src="assets/images/bermuda-running-from-coronavirus.png" alt="stay at home">
+    </div>
+  </div>
 </div>
 
+<div id="add-user-modal" class="modal col s12">
+  <div class="modal-content">
+    <div class="modal-title">
+      <span class="main white-text">Ajouter un profil</span>
+    </div>
+
+    <div class="row attestation-form">
+      <form class="col s12" [formGroup]="addPeopleForm">
+        <div class="row">
+          <div class="col m6 s12">
+            <label for="first-name">Prénom</label>
+            <input formControlName="firstName"
+                   id="first-name"
+                   type="text"
+                   class="validate"
+                   placeholder="Jean-Baptiste">
+          </div>
+          <div class="col m6 s12">
+            <label for="last-name">Nom</label>
+            <input formControlName="lastName"
+                   id="last-name"
+                   type="text"
+                   class="validate"
+                   placeholder="Dupont">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <label for="address">Adresse</label>
+            <input formControlName="address"
+                   id="address"
+                   type="text"
+                   class="validate"
+                   placeholder="14-16 Rue Voltaire">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col m6 s12">
+            <label for="postal-code">Code Postal</label>
+            <input formControlName="postalCode"
+                   id="postal-code"
+                   type="text"
+                   class="validate"
+                   inputmode="numeric"
+                   pattern="[0-9]{5}"
+                   min="00000"
+                   max="99999"
+                   autocomplete="postal-code"
+                   minlength="4"
+                   maxlength="5"
+                   placeholder="94270">
+          </div>
+          <div class="col m6 s12">
+            <label for="city">Ville</label>
+            <input formControlName="city"
+                   id="city"
+                   type="text"
+                   class="validate"
+                   placeholder="Le Kremlin-Bicêtre">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col m6 s12">
+            <label for="birth-date">Date de naissance</label>
+            <input formControlName="birthDate"
+                   id="birth-date"
+                   type="text"
+                   pattern="^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)"
+                   class="validate"
+                   placeholder="31/12/1984">
+          </div>
+          <div class="col m6 s12">
+            <label for="birth-city">Lieu de naissance</label>
+            <input formControlName="birthPlace"
+                   id="birth-city"
+                   type="text"
+                   class="validate"
+                   placeholder="La Ferté Macé">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <a (click)="onSubmit()" class="modal-close btn revert" [ngClass]="{'disabled': !addPeopleForm.valid}">Ajouter</a>
+      <button class="modal-close btn outline text-white">Annuler</button>
+    </div>
+  </div>
+</div>

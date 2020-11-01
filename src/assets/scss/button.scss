@@ -1,28 +1,67 @@
-.btn-wrapper {
+@import "colors";
 
-  margin-left: 20px;
+.link {
+  color: cornflowerblue;
+  cursor: pointer;
+}
 
-  a {
-    height: auto !important;
-    margin-top: 20px;
-    width: 130px;
-    background-color: #006EDB;
-    border-radius: 8px;
-    text-align: center;
-    line-height: 46px;
-    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
-    transition: 0.3s;
-    text-decoration: none;
-    color: white;
-    border: none;
-    font-size: 16px;
-    padding: 4px 12px 4px 12px;
-  }
+.btn {
+  padding: 22px !important;
+  height: auto;
+  width: auto;
+  line-height: 0;
+  border-radius: 25px;
 
-  a:hover {
-    cursor: pointer;
-    box-shadow: 0 12px 17px 2px rgba(0,0,0,0.14), 0 5px 22px 4px rgba(0,0,0,0.12), 0 7px 8px -4px rgba(0,0,0,0.20);
-    transition: 0.3s;
-  }
+  color: $text-primary-color !important;
+  background-color: $primary-color !important;
+}
+.btn:hover {
+  background-color: $primary-color-light !important;
+}
+.btn.disabled {
+  color: $text-primary-color-disabled !important;
+  background-color: $primary-color-disabled !important;
+}
+.btn.revert:not(.disabled) {
+  color: $primary-color !important;
+  background-color: whitesmoke !important;
+}
+.btn.outline {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+.btn.outline.revert {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: $primary-color !important;
+}
 
+/* COLOR TYPE BUTTON */
+
+.btn.btn-primary {
+  color: $text-primary-color !important;
+  background-color: $primary-color !important;
+}
+.btn.btn-primary:hover {
+  color: $text-primary-color !important;
+  background-color: $primary-color-light !important;
+}
+.btn.btn-primary.disabled {
+  color: $text-primary-color-disabled !important;
+  background-color: $primary-color-disabled !important;
+}
+
+.btn.btn-success {
+  color: $text-success-color !important;
+  background-color: $success-color !important;
+}
+.btn.btn-success:hover {
+  color: $text-success-color !important;
+  background-color: $success-color-light !important;
+}
+.btn.btn-success.disabled {
+  color: $text-success-color-disabled !important;
+  background-color: $success-color-disabled !important;
 }

@@ -1,0 +1,21 @@
+.footer {
+  $padding: 40px;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 50px;
+  text-align: center;
+  padding: $padding;
+  background-color: #6856F4;
+  color: whitesmoke;
+  font-size: 11px;
+
+  a {
+    color: lightblue !important;
+  }
+
+  p {
+    margin: 0;
+  }
+}
