@@ -1,5 +1,10 @@
 @import "colors";
 
+.link {
+  color: cornflowerblue;
+  cursor: pointer;
+}
+
 .btn {
   padding: 22px !important;
   height: auto;
@@ -14,29 +19,49 @@
   background-color: $primary-color-light !important;
 }
 .btn.disabled {
+  color: $text-primary-color-disabled !important;
   background-color: $primary-color-disabled !important;
 }
-.btn.revert {
-  background-color: whitesmoke !important;
+.btn.revert:not(.disabled) {
   color: $primary-color !important;
+  background-color: whitesmoke !important;
 }
 .btn.outline {
   box-shadow: none !important;
   background-color: transparent !important;
   border: none !important;
 }
+.btn.outline.revert {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: $primary-color !important;
+}
 
 /* COLOR TYPE BUTTON */
 
 .btn.btn-primary {
   color: $text-primary-color !important;
-  background-color: $primary-color;
+  background-color: $primary-color !important;
 }
 .btn.btn-primary:hover {
   color: $text-primary-color !important;
   background-color: $primary-color-light !important;
 }
-.btn.disabled {
+.btn.btn-primary.disabled {
   color: $text-primary-color-disabled !important;
   background-color: $primary-color-disabled !important;
+}
+
+.btn.btn-success {
+  color: $text-success-color !important;
+  background-color: $success-color !important;
+}
+.btn.btn-success:hover {
+  color: $text-success-color !important;
+  background-color: $success-color-light !important;
+}
+.btn.btn-success.disabled {
+  color: $text-success-color-disabled !important;
+  background-color: $success-color-disabled !important;
 }

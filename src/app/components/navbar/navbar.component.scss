@@ -11,7 +11,7 @@
   max-height: 240px;
   box-sizing: border-box;
   background-color: #6856F4;
-  padding: $padding;
+  padding: calc(env(safe-area-inset-top) + 20px) $padding $padding;
 
   .illustration {
     width: 20vw;

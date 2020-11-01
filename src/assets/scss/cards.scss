@@ -11,8 +11,16 @@
     color: $text-secondary-color;
 
     .card-title {
+      display: flex;
+      justify-content: left;
       font-weight: 400;
+      font-size: 24px;
       color: $text-neutral-color;
+
+      .material-icons {
+        line-height: 32px;
+        margin-right: 10px;
+      }
     }
   }
 }
