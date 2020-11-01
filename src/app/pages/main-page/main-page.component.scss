@@ -1,28 +1,5 @@
 .modal {
-  .btn {
-    margin-left: 16px;
-  }
 
-  .modal-title {
-    display: flex;
-    height: 54px;
-    margin-left: 16px;
-
-    span {
-      font-size: 36px;
-      line-height: 54px;
-    }
-
-    h4 {
-      font-size: 26px;
-      line-height: 54px;
-      margin-left: 26px;
-    }
-  }
-
-  .attestation-form {
-    margin: 20px 16px 20px 16px;
-  }
 }
 
 .card:not(.edit) {
@@ -34,7 +11,8 @@
   align-items: center;
 
   .edit-actions {
-    flex-grow: 2;
+    flex-grow: 1.5;
+    padding: 0 20px 0 5px;
   }
 
   .user-information {
@@ -46,4 +24,16 @@
     flex-direction: column;
     color: #6856F4;
   }
+}
+
+.modal .row {
+  margin: 0;
+}
+.modal .col {
+  margin-bottom: 10px;
+}
+
+
+form {
+  margin: 0 0 14.8px 0 !important;
 }

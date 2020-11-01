@@ -1,0 +1,20 @@
+@import "colors";
+
+label {
+  color: $text-label-color;
+  padding-bottom: 20px !important;
+  font-size: 18px;
+  font-weight: 300 !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+input[type=text], input[type=date] {
+  border: 0.5px solid $shadow-color  !important;
+  border-radius: 5px !important;
+  padding: 12px 12px 12px 12px !important;
+  height: 44px !important;
+  background-color: whitesmoke !important;
+  box-shadow: 1px 1px 4px 1px $shadow-color !important;
+  box-sizing: border-box !important;
+  font-family: 'Roboto', sans-serif !important;
+}

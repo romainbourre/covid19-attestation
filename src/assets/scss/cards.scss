@@ -1,0 +1,23 @@
+@import "colors";
+
+.card {
+  border: 1px solid $shadow-color;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-family: 'Roboto', sans-serif;
+
+  .card-content {
+    font-weight: 300;
+    color: $text-secondary-color;
+
+    .card-title {
+      font-weight: 400;
+      color: $text-neutral-color;
+    }
+  }
+}
+
+.card.shadow {
+  border: none !important;
+  box-shadow: 2px 2px 10px 2px $shadow-color;
+}

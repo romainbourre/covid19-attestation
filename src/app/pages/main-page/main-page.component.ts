@@ -25,6 +25,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.loadUsers();
   }
 
+  hasNoUser() {
+    return this.users.length === 0;
+  }
+
   switchEdit(): void {
     this.edited = !this.edited;
   }
@@ -37,15 +41,34 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/', 'attestation', user.id]).then();
   }
 
-  public hasNoUser() {
-    return this.users.length === 0;
+  deleteUser(user: User) {
+    this.userService.delete(user);
+    this.loadUsers();
+  }
+
+  onSubmit() {
+    if (this.addPeopleForm.valid) {
+      this.userService.add(this.addPeopleForm.value);
+      this.loadUsers();
+      this.addPeopleForm.reset();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    const options = {
+      startingTop: '1%',
+      endingTop: '1%'
+    };
+
+    const elements = document.querySelectorAll('.modal');
+    M.Modal.init(elements, options);
   }
 
   private loadUsers() {
     this.userService.getAll().subscribe(users => this.users = users);
   }
 
-  public createPeopleForm() {
+  private createPeopleForm() {
     this.addPeopleForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -55,23 +78,5 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       postalCode: ['', Validators.required],
       city: ['', Validators.required]
     });
-  }
-
-  public deleteUser(user: User) {
-    this.userService.delete(user);
-    this.loadUsers();
-  }
-
-  public onSubmit() {
-    if (this.addPeopleForm.valid) {
-      this.userService.add(this.addPeopleForm.value);
-      this.loadUsers();
-      this.addPeopleForm.reset();
-    }
-  }
-
-  ngAfterViewInit(): void {
-    const elements = document.querySelectorAll('.modal');
-    M.Modal.init(elements, null);
   }
 }
