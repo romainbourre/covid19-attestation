@@ -1,24 +1,30 @@
 <div class="container">
   <div class="row mobile-content">
     <div class="col s12 top">
-      <h1 class="title">Les raisons de mon déplacement</h1>
 
-      <p>
-        Voici la liste exhaustive des raisons valables à un déplacement telles que définies par le Ministère de
-        l'Interieur. Pour sélectionner la justification qui s'applique à votre demande de déplacement, cliquez sur
-        la catégorie concernée.
-      </p>
+      <div class="part-title">
+        <span class="main">Les raisons de votre déplacement {{user.firstName}} ?</span>
+      </div>
+      <div class="part-description">
+        <p>
+          Voici la liste exhaustive des raisons valables à un déplacement telles que définies par le Ministère de
+          l'Interieur. Pour sélectionner la justification qui s'applique à votre demande de déplacement, cliquez sur
+          la catégorie concernée.
+        </p>
 
-      <p>
-        Je certifie que mon déplacement est lié au motif suivant (sélectionner votre catégorie de sortie) autorisé en application des mesures générales nécessaires pour faire face à l'épidémie de Covid19 dans le cadre de l'état d'urgence sanitaire <a href="#legal">[1]</a> :
-      </p>
+        <p>
+          Je certifie que mon déplacement est lié au motif suivant (sélectionner votre catégorie de sortie) autorisé en application des mesures générales nécessaires pour faire face à l'épidémie de Covid19 dans le cadre de l'état d'urgence sanitaire <a class="link" href="#legal">[1]</a> :
+        </p>
+      </div>
+
     </div>
+
     <div class="col s12" *ngFor="let reason of reasons">
       <div class="card" [ngClass]="{'active': reason.active}" (click)="switchReason(reason)">
         <div class="card-content">
-          <div class="title">
+          <div class="card-title">
             <span class="material-icons left">{{reason.icon}}</span>
-            <span class="card-title">{{reason.title}}</span>
+            <span class="">{{reason.title}}</span>
           </div>
 
           <p class="description">{{reason.description}}</p>
@@ -27,21 +33,17 @@
       </div>
     </div>
   </div>
-  <div class="row mobile-content">
-    <div class="col btn-wrapper">
-      <a class="waves-effect waves-light btn" routerLink="/">
+  <div class="actions-bar">
+      <a class="waves-effect waves-light btn btn-success" (click)="downloadAttestation()" [ngClass]="{'disabled': !atLeastOneSelectedCategory()}">
+        Générer l'attestation <span class="hide-mobile">de {{user.firstName}}</span>
+      </a>
+      <a class="waves-effect waves-light btn outline revert" routerLink="/">
         Retour
       </a>
-    </div>
-    <div class="col btn-wrapper">
-      <a class="waves-effect waves-light btn btn-success" (click)="downloadAttestation()" [ngClass]="{'disabled': !atLeastOneSelectedCategory()}">
-        Générer l'attestation de {{user.firstName}}
-      </a>
-    </div>
   </div>
   <div class="row">
     <div class="col">
-      <small id="legal">[1] Les personnes souhaitant bénéficier de l'une de ces exceptions doivent se munir s'il y a lieu, lors de leurs déplacements hors de leur domicile, d'un document leur permettant de justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions.</small>
+      <small id="legal" class="text-neutral">[1] Les personnes souhaitant bénéficier de l'une de ces exceptions doivent se munir s'il y a lieu, lors de leurs déplacements hors de leur domicile, d'un document leur permettant de justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions.</small>
     </div>
   </div>
 </div>
