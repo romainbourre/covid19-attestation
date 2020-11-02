@@ -22,6 +22,7 @@ body {
 
 .container, .container-fluid {
   padding-top: 20px;
+  width: 99%;
 }
 
 @media(max-width: 400px) {
@@ -35,7 +36,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   align-items: baseline;
-  margin-top: 22.8px;
+  margin-top: 50px;
   margin-bottom: 13.68px;
 
   .main {
@@ -43,7 +44,7 @@ body {
   }
 
   .secondary {
-    font-size: 20px;
+    font-size: 18px;
     vertical-align: bottom;
     margin: 0 30px 0 30px;
     color: cornflowerblue;

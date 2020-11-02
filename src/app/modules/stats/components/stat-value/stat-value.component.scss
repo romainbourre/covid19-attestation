@@ -1,0 +1,19 @@
+@import "src/assets/scss/colors";
+
+.card-content {
+  text-align: center;
+}
+
+.card-title {
+  width: 100%;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  justify-content: center !important;
+  margin-bottom: 0 !important;
+}
+
+.stat-value {
+  font-size: 35px;
+  font-weight: 400;
+  color: $primary-color;
+}
