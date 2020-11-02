@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {StatsModule} from './modules/stats/stats.module';
+import {FilesModule} from './modules/files/files.module';
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -33,7 +34,8 @@ registerLocaleData(localeFr, 'fr-FR');
         ReactiveFormsModule,
         HttpClientModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        StatsModule
+        StatsModule,
+        FilesModule
     ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR' },
