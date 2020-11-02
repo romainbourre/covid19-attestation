@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col">
+  <div class="col s12">
     <div class="part-title">
       <span class="main">Les fichiers utiles</span>
     </div>
@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-  <div class="col" *ngFor="let file of files">
+  <div class="col s12 m4" *ngFor="let file of files">
     <app-file-view [file]="file"></app-file-view>
   </div>
 </div>
