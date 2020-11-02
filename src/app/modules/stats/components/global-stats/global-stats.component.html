@@ -1,28 +1,31 @@
-<div class="row">
-  <div class="col">
-    <div class="part-title">
-      <div class="main">Le Covid19 en quelques chiffres *</div>
+<div *ngIf="globalData">
+  <div class="row">
+    <div class="col">
+      <div class="part-title">
+        <div class="main">Le Covid19 en quelques chiffres *</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col s12 m6 xl3">
-    <app-stat-value name="Cas confirmés" [value]="globalData.casConfirmes.toLocaleString()"></app-stat-value>
+  <div class="row">
+    <div class="col s12 m6 xl3">
+      <app-stat-value name="Cas confirmés" [value]="globalData.casConfirmes.toLocaleString()"></app-stat-value>
+    </div>
+    <div class="col s12 m6 xl3">
+      <app-stat-value name="Hospitalisés" [value]="globalData.hospitalises.toLocaleString()"></app-stat-value>
+    </div>
+    <div class="col s12 m6 xl3">
+      <app-stat-value name="Décès"
+                      [value]="(globalData.deces + globalData.decesEhpad).toLocaleString()"></app-stat-value>
+    </div>
+    <div class="col s12 m6 xl3">
+      <app-stat-value name="Guéris" [value]="globalData.gueris.toLocaleString()"></app-stat-value>
+    </div>
   </div>
-  <div class="col s12 m6 xl3">
-    <app-stat-value name="Hospitalisés" [value]="globalData.hospitalises.toLocaleString()"></app-stat-value>
-  </div>
-  <div class="col s12 m6 xl3">
-    <app-stat-value name="Décès" [value]="(globalData.deces + globalData.decesEhpad).toLocaleString()"></app-stat-value>
-  </div>
-  <div class="col s12 m6 xl3">
-    <app-stat-value name="Guéris" [value]="globalData.gueris.toLocaleString()"></app-stat-value>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col">
-    <small class="text-neutral">* Chiffres au {{globalData.date | date : 'dd MMMM yyyy'}}.</small>
+  <div class="row">
+    <div class="col">
+      <small class="text-neutral">* Chiffres au {{globalData.date | date : 'dd MMMM yyyy'}}.</small>
+    </div>
   </div>
 </div>
