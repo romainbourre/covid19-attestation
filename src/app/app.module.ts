@@ -13,6 +13,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {StatsModule} from './modules/stats/stats.module';
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -25,14 +26,15 @@ registerLocaleData(localeFr, 'fr-FR');
     NavbarComponent,
     FooterComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        StatsModule
+    ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR' },
     FormBuilder,
