@@ -1,11 +1,18 @@
 @import "colors";
 
+
+
 .modal {
+  --safe-area-inset-top: env(safe-area-inset-top, 0);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0);
+
   background-color: $primary-color;
   border-radius: 10px !important;
   max-height: 98% !important;
   font-family: 'Roboto', sans-serif !important;
   opacity: 0.8;
+  padding-top: var(--safe-area-inset-top) !important;
+  padding-bottom: var(--safe-area-inset-bottom) !important;
 
   .modal-title {
     margin: 0 21.75px 30px 21.75px;
@@ -33,5 +40,6 @@
     top: 0 !important;
     bottom: 0 !important;
     border-radius: 0 !important;
+    padding-bottom: calc(var(--safe-area-inset-bottom) + 10px) !important;
   }
 }
