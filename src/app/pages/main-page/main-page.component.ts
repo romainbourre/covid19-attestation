@@ -89,7 +89,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         num = 1;
       }
       str = num > parseInt(max.toString().charAt(0), 0)
-      && num.toString().length == 1 ? '0' + num : num.toString();
+      && num.toString().length === 1 ? '0' + num : num.toString();
     }
 
     return str;
