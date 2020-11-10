@@ -29,7 +29,7 @@
           </div>
           <div class="user-information">
             <span class="card-title">{{user.firstName}}</span>
-            <p>Né le {{user.birthDate | dateFormat | date}}, à {{user.birthPlace}}</p>
+            <p>Né le {{user.birthDate | date}}, à {{user.birthPlace}}</p>
             <p>{{user.address}}</p>
             <p>{{user.postalCode}} - {{user.city}}</p>
           </div>
@@ -75,7 +75,8 @@
                    id="first-name"
                    type="text"
                    class="validate"
-                   placeholder="Jean-Baptiste">
+                   placeholder="Jean-Baptiste"
+                   (change)="onInputChange()">
           </div>
           <div class="col m6 s12">
             <label for="last-name">Nom</label>
@@ -83,7 +84,8 @@
                    id="last-name"
                    type="text"
                    class="validate"
-                   placeholder="Dupont">
+                   placeholder="Dupont"
+                   (change)="onInputChange()">
           </div>
         </div>
         <div class="row">
@@ -93,7 +95,8 @@
                    id="address"
                    type="text"
                    class="validate"
-                   placeholder="14-16 Rue Voltaire">
+                   placeholder="14-16 Rue Voltaire"
+                   (change)="onInputChange()">
           </div>
         </div>
         <div class="row">
@@ -110,7 +113,8 @@
                    autocomplete="postal-code"
                    minlength="4"
                    maxlength="5"
-                   placeholder="94270">
+                   placeholder="94270"
+                   (change)="onInputChange()">
           </div>
           <div class="col m6 s12">
             <label for="city">Ville</label>
@@ -118,7 +122,8 @@
                    id="city"
                    type="text"
                    class="validate"
-                   placeholder="Le Kremlin-Bicêtre">
+                   placeholder="Le Kremlin-Bicêtre"
+                   (change)="onInputChange()">
           </div>
         </div>
         <div class="row">
@@ -126,10 +131,10 @@
             <label for="birth-date">Date de naissance</label>
             <input formControlName="birthDate"
                    id="birth-date"
-                   type="text"
-                   pattern="^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)"
+                   type="date"
                    class="validate"
-                   placeholder="31/12/1984">
+                   placeholder="31/12/1984"
+                   (change)="onInputChange()">
           </div>
           <div class="col m6 s12">
             <label for="birth-city">Lieu de naissance</label>
@@ -137,7 +142,8 @@
                    id="birth-city"
                    type="text"
                    class="validate"
-                   placeholder="La Ferté Macé">
+                   placeholder="La Ferté Macé"
+                   (change)="onInputChange()">
           </div>
         </div>
       </form>

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/user.model';
@@ -19,7 +19,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private ref: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -48,6 +49,16 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.loadUsers();
   }
 
+  onInputChange() {
+    this.addPeopleForm.controls.firstName.setValue(this.addPeopleForm.controls.firstName.value);
+    this.addPeopleForm.controls.lastName.setValue(this.addPeopleForm.controls.lastName.value);
+    this.addPeopleForm.controls.birthDate.setValue(this.addPeopleForm.controls.birthDate.value);
+    this.addPeopleForm.controls.birthPlace.setValue(this.addPeopleForm.controls.birthPlace.value);
+    this.addPeopleForm.controls.address.setValue(this.addPeopleForm.controls.address.value);
+    this.addPeopleForm.controls.postalCode.setValue(this.addPeopleForm.controls.postalCode.value);
+    this.addPeopleForm.controls.city.setValue(this.addPeopleForm.controls.city.value);
+  }
+
   onSubmit() {
     if (this.addPeopleForm.valid) {
       this.userService.add(this.addPeopleForm.value);
@@ -64,6 +75,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
     const elements = document.querySelectorAll('.modal');
     M.Modal.init(elements, options);
+
+    document.getElementsByName('body')
   }
 
   private loadUsers() {
@@ -80,44 +93,5 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       postalCode: ['', Validators.required],
       city: ['', Validators.required]
     });
-  }
-
-  private checkValue(str, max) {
-    if (str.charAt(0) !== '0' || str === '00') {
-      let num = parseInt(str, 0);
-      if (isNaN(num) || num <= 0 || num > max) {
-        num = 1;
-      }
-      str = num > parseInt(max.toString().charAt(0), 0)
-      && num.toString().length === 1 ? '0' + num : num.toString();
-    }
-
-    return str;
-  }
-
-  onBirthDateChange() {
-    let input = this.addPeopleForm.controls.birthDate.value;
-
-    if (/\D\/$/.test(input)) {
-      input = input.substr(0, input.length - 3);
-    }
-
-    const values = input.split('/').map((v: string) => {
-      return v.replace(/\D/g, '');
-    });
-
-    if (values[0]) {
-      values[0] = this.checkValue(values[0], 12);
-    }
-
-    if (values[1]) {
-      values[1] = this.checkValue(values[1], 31);
-    }
-
-    const output = values.map((v: string, i: number) => {
-      return v.length === 2 && i < 2 ? v + '/' : v;
-    });
-
-    this.addPeopleForm.controls.birthDate.setValue(output.join('').substr(0, 14));
   }
 }
