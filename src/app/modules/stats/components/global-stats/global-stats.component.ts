@@ -23,4 +23,14 @@ export class GlobalStatsComponent implements OnInit {
     });
   }
 
+  isCompleteData() {
+    return this.globalData
+      && this.globalData.casConfirmes
+      && this.globalData.hospitalises
+      && this.globalData.deces
+      && this.globalData.decesEhpad
+      && this.globalData.gueris
+      && this.globalData.date;
+  }
+
 }
