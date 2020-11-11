@@ -29,7 +29,7 @@
           </div>
           <div class="user-information">
             <span class="card-title">{{user.firstName}}</span>
-            <p>Né le {{user.birthDate | dateFormat | date}}, à {{user.birthPlace}}</p>
+            <p>Né le {{user.birthDate | date}}, à {{user.birthPlace}}</p>
             <p>{{user.address}}</p>
             <p>{{user.postalCode}} - {{user.city}}</p>
           </div>
@@ -126,8 +126,7 @@
             <label for="birth-date">Date de naissance</label>
             <input formControlName="birthDate"
                    id="birth-date"
-                   type="text"
-                   pattern="^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)"
+                   type="date"
                    class="validate"
                    placeholder="31/12/1984">
           </div>
