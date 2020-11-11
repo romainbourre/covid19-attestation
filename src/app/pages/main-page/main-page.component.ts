@@ -48,16 +48,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.loadUsers();
   }
 
-  onInputChange() {
-    this.addPeopleForm.controls.firstName.setValue(this.addPeopleForm.controls.firstName.value);
-    this.addPeopleForm.controls.lastName.setValue(this.addPeopleForm.controls.lastName.value);
-    this.addPeopleForm.controls.birthDate.setValue(this.addPeopleForm.controls.birthDate.value);
-    this.addPeopleForm.controls.birthPlace.setValue(this.addPeopleForm.controls.birthPlace.value);
-    this.addPeopleForm.controls.address.setValue(this.addPeopleForm.controls.address.value);
-    this.addPeopleForm.controls.postalCode.setValue(this.addPeopleForm.controls.postalCode.value);
-    this.addPeopleForm.controls.city.setValue(this.addPeopleForm.controls.city.value);
-  }
-
   onSubmit() {
     if (this.addPeopleForm.valid) {
       this.userService.add(this.addPeopleForm.value);
