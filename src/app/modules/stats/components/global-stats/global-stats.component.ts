@@ -49,7 +49,7 @@ export class GlobalStatsComponent implements OnInit {
 
   getDeadCases(): string {
     if (this.globalData && this.globalData.deces && this.globalData.decesEhpad) {
-      return this.globalData.deces + this.globalData.decesEhpad.toLocaleString();
+      return (this.globalData.deces + this.globalData.decesEhpad).toLocaleString();
     }
     return 'Non disponible';
   }
