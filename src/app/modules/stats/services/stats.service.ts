@@ -13,6 +13,7 @@ export class StatsService {
 
   public getGlobalStats(): Observable<Global> {
     return this.http.get(`https://coronavirusapi-france.now.sh/FranceLiveGlobalData`).pipe(map((response: StatsResponseModel) => {
+      console.log(response);
       return response.FranceGlobalLiveData[0];
     }));
   }

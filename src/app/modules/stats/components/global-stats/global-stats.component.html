@@ -2,24 +2,23 @@
   <div class="row">
     <div class="col">
       <div class="part-title">
-        <div class="main">Le Covid19 en quelques chiffres *</div>
+        <div class="main">Le Covid19 en France en quelques chiffres *</div>
       </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col s12 m6 xl3">
-      <app-stat-value name="Cas confirmés" [value]="globalData.casConfirmes.toLocaleString()"></app-stat-value>
+      <app-stat-value name="Cas confirmés" [value]="getConfirmedCases()"></app-stat-value>
     </div>
     <div class="col s12 m6 xl3">
-      <app-stat-value name="Hospitalisés" [value]="globalData.hospitalises.toLocaleString()"></app-stat-value>
+      <app-stat-value name="Hospitalisés" [value]="getHospitalizedCases()"></app-stat-value>
     </div>
     <div class="col s12 m6 xl3">
-      <app-stat-value name="Décès"
-                      [value]="(globalData.deces + globalData.decesEhpad).toLocaleString()"></app-stat-value>
+      <app-stat-value name="Décès" [value]="getDeadCases()"></app-stat-value>
     </div>
     <div class="col s12 m6 xl3">
-      <app-stat-value name="Guéris" [value]="globalData.gueris.toLocaleString()"></app-stat-value>
+      <app-stat-value name="Guéris" [value]="getCuredCases()"></app-stat-value>
     </div>
   </div>
 
