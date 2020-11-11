@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/user.model';
@@ -19,8 +19,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private router: Router,
-              private ref: ChangeDetectorRef) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -75,8 +74,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
     const elements = document.querySelectorAll('.modal');
     M.Modal.init(elements, options);
-
-    document.getElementsByName('body')
   }
 
   private loadUsers() {
