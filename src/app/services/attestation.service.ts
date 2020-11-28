@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from '../models/user.model';
-import {PDFDocument, StandardFonts} from 'pdf-lib';
+import {PDFDocument, rgb, StandardFonts} from 'pdf-lib';
 import QRCode from 'qrcode';
 import {HttpClient} from '@angular/common/http';
 import {Reason} from '../pages/attestation-page/attestation-page.component';
@@ -45,7 +45,7 @@ export class AttestationService {
       `Adresse: ${user.address} ${user.postalCode} ${user.city}`,
       `Sortie: ${datesortie} a ${releaseHours}h${releaseMinutes}`,
       `Motifs: ${activeReasonsLabels}`
-    ].join(';\n ');
+    ].join(';\n');
 
     const existingPdfBytes = await this.http.get('assets/pdf/certificate.pdf', {responseType: 'arraybuffer'}).toPromise();
 
@@ -73,39 +73,40 @@ export class AttestationService {
       page1.drawText(text, { x, y, size, font });
     };
 
-    drawText(`${user.firstName} ${user.lastName}`, 119, 696);
-    drawText(user.birthDate, 119, 674);
-    drawText(user.birthPlace, 298, 674);
-    drawText(`${user.address} ${user.postalCode} ${user.city}`, 133, 652);
+    drawText(`${user.firstName} ${user.lastName}`, 92, 702);
+    drawText(user.birthDate, 92, 684);
+    drawText(user.birthPlace, 214, 684);
+    drawText(`${user.address} ${user.postalCode} ${user.city}`, 104, 665);
 
-    const caseX = 83;
+    const caseX = 47;
+    const caseFontSize = 12;
 
     if (reasons.find(r => r.id === 'travail').active) {
-      drawText('x', caseX, 578, 18);
+      drawText('x', caseX, 553, caseFontSize);
     }
-    if (reasons.find(r => r.id === 'achats').active) {
-      drawText('x', caseX, 533, 18);
+    if (reasons.find(r => r.id === 'achats_culturel_cultuel').active) {
+      drawText('x', caseX, 482, caseFontSize);
     }
     if (reasons.find(r => r.id === 'sante').active) {
-      drawText('x', caseX, 477, 18);
+      drawText('x', caseX, 434, caseFontSize);
     }
     if (reasons.find(r => r.id === 'famille').active) {
-      drawText('x', caseX, 435, 18);
+      drawText('x', caseX, 410, caseFontSize);
     }
     if (reasons.find(r => r.id === 'handicap').active) {
-      drawText('x', caseX, 396, 18);
+      drawText('x', caseX, 373, caseFontSize);
     }
     if (reasons.find(r => r.id === 'sport_animaux').active) {
-      drawText('x', caseX, 358, 18);
+      drawText('x', caseX, 349, caseFontSize);
     }
     if (reasons.find(r => r.id === 'convocation').active) {
-      drawText('x', caseX, 295, 18);
+      drawText('x', caseX, 276, caseFontSize);
     }
     if (reasons.find(r => r.id === 'missions').active) {
-      drawText('x', caseX, 255, 18);
+      drawText('x', caseX, 252, caseFontSize);
     }
     if (reasons.find(r => r.id === 'enfants').active) {
-      drawText('x', caseX, 211, 18);
+      drawText('x', caseX, 228, caseFontSize);
     }
 
     let locationSize = this.idealFontSize(font, user.city, 83, 7, 11);
@@ -116,30 +117,36 @@ export class AttestationService {
       locationSize = 7;
     }
 
-    drawText(user.city, 105, 175, locationSize);
+    drawText(user.city, 78, 76, locationSize);
 
-    drawText(`${datesortie}`, 91, 153, 11);
-    drawText(`${releaseHours}:${releaseMinutes}`, 257, 153, 11);
+    drawText(`${datesortie}`, 63, 58, 11);
+    drawText(`${releaseHours}:${releaseMinutes}`, 227, 58, 11);
 
-    drawText('Date de création:', 464, 150, 7);
-    drawText(`${creationDate} à ${creationHour}`, 455, 144, 7);
+    /**drawText('Date de création:', 464, 150, 7);
+    drawText(`${creationDate} à ${creationHour}`, 455, 144, 7);**/
+
+    const qrTitle1 = 'QR-code contenant les informations ';
+    const qrTitle2 = 'de votre attestation numérique';
 
     const generatedQR = await this.generateQR(data);
 
     const qrImage = await pdfDoc.embedPng(generatedQR);
 
+    page1.drawText(qrTitle1 + '\n' + qrTitle2, { x: 440, y: 130, size: 6, font, lineHeight: 10, color: rgb(1, 1, 1) });
+
     page1.drawImage(qrImage, {
       x: page1.getWidth() - 156,
-      y: 122,
+      y: 25,
       width: 92,
       height: 92,
     });
 
     pdfDoc.addPage();
     const page2 = pdfDoc.getPages()[1];
+    page2.drawText(qrTitle1 + qrTitle2, { x: 50, y: page2.getHeight() - 70, size: 11, font, color: rgb(1, 1, 1) });
     page2.drawImage(qrImage, {
       x: 50,
-      y: page2.getHeight() - 350,
+      y: page2.getHeight() - 390,
       width: 300,
       height: 300,
     });

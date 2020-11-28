@@ -27,16 +27,15 @@ export class AttestationPageComponent implements OnInit {
       id: 'travail',
       icon: 'work',
       title: 'Travail',
-      description: 'Déplacements entre le domicile et le lieu d\'exercice de l\'activité professionnelle ou les déplacements professionnels ne pouvant être différés.',
+      description: 'Déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle ou un établissement d’enseignement ou de formation; déplacements professionnels ne pouvant être différés; déplacements pour un concours ou un examen',
       legal: 'A utiliser par les travailleurs non salariés, lorsqu\'ils ne peuvent disposer d\'un justificatif de déplacement établi par leur employeur.',
       active: false,
     },
     {
-      id: 'achats',
+      id: 'achats_culturel_cultuel',
       icon: 'shopping_cart',
       title: 'Courses',
-      description: 'Déplacements pour effectuer des achats de fournitures nécessaires à l\'activité professionnelle, des achats de première nécessité dans des établissements dont les activités demeurent autorisées (liste sur gouvernement.fr) et les livraisons à domicile.',
-      legal: 'Y compris les acquisitions à titre gratuit (distribution de denrées alimentaires...) et les déplacements liés à la perception de prestations sociales et au retrait d\'espèces.',
+      description: 'Déplacements pour se rendre dans un établissement culturel autorisé ou un lieu de culte; déplacements pour effectuer des achats de biens, pour des services dont la fourniture est autorisée, pour les retraits de commandes et les livraisons à domicile;',
       active: false,
     },
     {
@@ -64,7 +63,7 @@ export class AttestationPageComponent implements OnInit {
       id: 'sport_animaux',
       icon: 'transfer_within_a_station',
       title: 'Sortie brève',
-      description: 'Déplacements brefs, dans la limite d\'une heure quotidienne et dans un rayon maximal d\'un kilomètre autour du domicile, liés soit à l\'activité physique individuelle des personnes, à l\'exclusion de toute pratique sportive collective et de toute proximité avec d\'autres personnes, soit à la promenade avec les seules personnes regroupées dans un même domicile, soit aux besoins des animaux de compagnie.',
+      description: 'Déplacements en plein air ou vers un lieu de plein air, sans changement du lieu de résidence, dans la limite de trois heures quotidiennes et dans un rayon maximal de vingt kilomètres autour du domicile, liés soit à l’activité physique ou aux loisirs individuels, à l’exclusion de toute pratique sportive collective et de toute proximité avec d’autres personnes, soit à la promenade avec les seules personnes regroupées dans un même domicile, soit aux besoins des animaux de compagnie;',
       active: false,
     },
     {
