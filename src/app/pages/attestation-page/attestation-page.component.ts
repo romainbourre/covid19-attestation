@@ -11,6 +11,7 @@ export class Reason {
   description: string;
   legal?: string = null;
   active = false;
+  positionY: number;
 }
 
 @Component({
@@ -27,66 +28,66 @@ export class AttestationPageComponent implements OnInit {
       id: 'travail',
       icon: 'work',
       title: 'Travail',
-      description: 'Déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle ou un établissement d’enseignement ou de formation; déplacements professionnels ne pouvant être différés; déplacements pour un concours ou un examen',
-      legal: 'A utiliser par les travailleurs non salariés, lorsqu\'ils ne peuvent disposer d\'un justificatif de déplacement établi par leur employeur.',
+      description: 'Déplacements entre le domicile et le lieu d\'exercice de l\'activité professionnelle ou le lieu d\'enseignement et de formation, déplacements professionnels ne pouvant être différés',
       active: false,
-    },
-    {
-      id: 'achats_culturel_cultuel',
-      icon: 'shopping_cart',
-      title: 'Courses',
-      description: 'Déplacements pour se rendre dans un établissement culturel autorisé ou un lieu de culte; déplacements pour effectuer des achats de biens, pour des services dont la fourniture est autorisée, pour les retraits de commandes et les livraisons à domicile;',
-      active: false,
+      positionY: 540,
     },
     {
       id: 'sante',
       icon: 'local_hospital',
       title: 'Consultation médicale',
-      description: 'Consultations et soins ne pouvant être assurés à distance et ne pouvant être différés et l’achat de médicaments.',
+      description: 'Déplacements pour des consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ou pour l\'achat de produits de santé',
       active: false,
+      positionY: 508,
     },
     {
       id: 'famille',
       icon: 'people',
       title: 'Famille et assistance',
-      description: 'Déplacements pour motif familial impérieux, pour l\'assistance aux personnes vulnérables et précaires ou la garde d\'enfants.',
+      description: 'Déplacements pour motif familial impérieux, pour l\'assistance aux personnes vulnérables ou précaires ou pour la garde d\'enfants',
       active: false,
+      positionY: 474,
     },
     {
       id: 'handicap',
       icon: 'accessible',
       title: 'Handicap',
-      description: 'Déplacements des personnes en situation de handicap et de leur accompagnant.',
+      description: 'Déplacements des personnes en situation de handicap et de leur accompagnant',
       active: false,
-    },
-    {
-      id: 'sport_animaux',
-      icon: 'transfer_within_a_station',
-      title: 'Sortie brève',
-      description: 'Déplacements en plein air ou vers un lieu de plein air, sans changement du lieu de résidence, dans la limite de trois heures quotidiennes et dans un rayon maximal de vingt kilomètres autour du domicile, liés soit à l’activité physique ou aux loisirs individuels, à l’exclusion de toute pratique sportive collective et de toute proximité avec d’autres personnes, soit à la promenade avec les seules personnes regroupées dans un même domicile, soit aux besoins des animaux de compagnie;',
-      active: false,
+      positionY: 441,
     },
     {
       id: 'convocation',
       icon: 'gavel',
       title: 'Convocation',
-      description: 'Convocation judiciaire ou administrative et rendez-vous dans un service public.',
+      description: 'Déplacements pour répondre à une convocation judiciaire ou administrative',
       active: false,
+      positionY: 418,
     },
     {
       id: 'missions',
       icon: 'sports_kabaddi',
       title: 'Intérêt général',
-      description: 'Participation à des missions d’intérêt général sur demande de l’autorité administrative.',
+      description: 'Déplacements pour participer à des missions d\'intérêt général sur demande de l\'autorité administrative',
       active: false,
+      positionY: 397,
     },
     {
-      id: 'enfants',
-      icon: 'school',
-      title: 'École/Périscolaire',
-      description: 'Déplacement pour chercher les enfants à l’école et à l’occasion de leurs activités périscolaires',
-      active: false
-    }
+      id: 'transits',
+      icon: 'flight_takeoff',
+      title: 'Transits',
+      description: 'Déplacements liés à des transits ferroviaires ou aériens pour des déplacements de longues distances',
+      active: false,
+      positionY: 363,
+    },
+    {
+      id: 'animaux',
+      icon: 'pets',
+      title: 'Animaux',
+      description: 'Déplacements brefs, dans un rayon maximal d\'un kilomètre autour du domicile pour les besoins des animaux de compagnie',
+      active: false,
+      positionY: 330,
+    },
   ];
 
   constructor(private userService: UserService,
