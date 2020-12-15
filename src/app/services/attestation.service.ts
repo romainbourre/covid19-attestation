@@ -73,41 +73,18 @@ export class AttestationService {
       page1.drawText(text, { x, y, size, font });
     };
 
-    drawText(`${user.firstName} ${user.lastName}`, 92, 702);
-    drawText(user.birthDate, 92, 684);
-    drawText(user.birthPlace, 214, 684);
-    drawText(`${user.address} ${user.postalCode} ${user.city}`, 104, 665);
+    drawText(`${user.firstName} ${user.lastName}`, 119, 665);
+    drawText(user.birthDate, 119, 645);
+    drawText(user.birthPlace, 312, 645);
+    drawText(`${user.address} ${user.postalCode} ${user.city}`, 133, 625);
 
-    const caseX = 47;
+    const caseX = 73;
     const caseFontSize = 12;
 
-    if (reasons.find(r => r.id === 'travail').active) {
-      drawText('x', caseX, 553, caseFontSize);
-    }
-    if (reasons.find(r => r.id === 'achats_culturel_cultuel').active) {
-      drawText('x', caseX, 482, caseFontSize);
-    }
-    if (reasons.find(r => r.id === 'sante').active) {
-      drawText('x', caseX, 434, caseFontSize);
-    }
-    if (reasons.find(r => r.id === 'famille').active) {
-      drawText('x', caseX, 410, caseFontSize);
-    }
-    if (reasons.find(r => r.id === 'handicap').active) {
-      drawText('x', caseX, 373, caseFontSize);
-    }
-    if (reasons.find(r => r.id === 'sport_animaux').active) {
-      drawText('x', caseX, 349, caseFontSize);
-    }
-    if (reasons.find(r => r.id === 'convocation').active) {
-      drawText('x', caseX, 276, caseFontSize);
-    }
-    if (reasons.find(r => r.id === 'missions').active) {
-      drawText('x', caseX, 252, caseFontSize);
-    }
-    if (reasons.find(r => r.id === 'enfants').active) {
-      drawText('x', caseX, 228, caseFontSize);
-    }
+    const activeReasons = reasons.filter(r => r.active);
+    activeReasons.forEach(r => {
+      drawText('x', caseX, r.positionY, caseFontSize);
+    });
 
     let locationSize = this.idealFontSize(font, user.city, 83, 7, 11);
 
@@ -117,13 +94,10 @@ export class AttestationService {
       locationSize = 7;
     }
 
-    drawText(user.city, 78, 76, locationSize);
+    drawText(user.city, 105, 286, locationSize);
 
-    drawText(`${datesortie}`, 63, 58, 11);
-    drawText(`${releaseHours}:${releaseMinutes}`, 227, 58, 11);
-
-    /**drawText('Date de création:', 464, 150, 7);
-    drawText(`${creationDate} à ${creationHour}`, 455, 144, 7);**/
+    drawText(`${datesortie}`, 91, 267, 11);
+    drawText(`${releaseHours}:${releaseMinutes}`, 312, 267, 11);
 
     const qrTitle1 = 'QR-code contenant les informations ';
     const qrTitle2 = 'de votre attestation numérique';
@@ -136,7 +110,7 @@ export class AttestationService {
 
     page1.drawImage(qrImage, {
       x: page1.getWidth() - 156,
-      y: 25,
+      y: 125,
       width: 92,
       height: 92,
     });
@@ -146,7 +120,7 @@ export class AttestationService {
     page2.drawText(qrTitle1 + qrTitle2, { x: 50, y: page2.getHeight() - 70, size: 11, font, color: rgb(1, 1, 1) });
     page2.drawImage(qrImage, {
       x: 50,
-      y: page2.getHeight() - 390,
+      y: page2.getHeight() - 350,
       width: 300,
       height: 300,
     });
